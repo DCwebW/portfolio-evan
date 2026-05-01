@@ -37,6 +37,8 @@ const images = [
 
 export default function ParallaxSection() {
   React.useEffect(() => {
+    if (window.matchMedia('(max-width: 768px)').matches) return;
+
     const lenis = new Lenis();
 
     function raf(time: number) {

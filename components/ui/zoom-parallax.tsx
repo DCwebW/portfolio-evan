@@ -1,7 +1,7 @@
 'use client';
 
 import { useScroll, useTransform, motion } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 interface Image {
   src: string;
@@ -13,7 +13,20 @@ interface ZoomParallaxProps {
   images: Image[];
 }
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+  return isMobile;
+}
+
 export function ZoomParallax({ images }: ZoomParallaxProps) {
+  const isMobile = useIsMobile();
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
@@ -27,6 +40,19 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
   const scale9 = useTransform(scrollYProgress, [0, 1], [1, 9]);
 
   const scales = [scale4, scale5, scale6, scale5, scale6, scale8, scale9];
+
+  if (isMobile) {
+    const central = images[0];
+    return (
+      <div className="flex items-center justify-center py-12 px-6">
+        <img
+          src={central?.src || '/placeholder.svg'}
+          alt={central?.alt || 'Image'}
+          className="w-full max-w-sm rounded-xl object-cover aspect-video"
+        />
+      </div>
+    );
+  }
 
   return (
     <div ref={container} className="relative h-[300vh]">
