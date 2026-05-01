@@ -1,49 +1,11 @@
-import Navbar from "./components/Navbar";
+import HeroSection from "./components/HeroSection";
 import ParallaxSection from "./components/ParallaxSection";
 
 export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section id="hero">
-        <Navbar />
-        <div className="hero-bg" />
-        <div className="hero-overlay" />
-
-        <div className="hero-body">
-          <div className="hero-left">
-            <p className="hero-eyebrow">Hey, I&apos;m a</p>
-            <h1 className="hero-title">
-              Chargé de<br />Communication
-            </h1>
-          </div>
-          <div className="hero-right">
-            <p className="hero-quote">Une bonne communication<br />doit être invisible.</p>
-            <p className="hero-sub">Du logo au contenu, je construis des marques qui connectent et qui durent.</p>
-          </div>
-        </div>
-
-        <div className="hero-tags-band">
-          <div className="hero-tags-inner">
-            <div className="hero-tag">
-              <div className="hero-tag-num">#01</div>
-              <div className="hero-tag-label">Stratégie Digitale</div>
-            </div>
-            <div className="hero-tag">
-              <div className="hero-tag-num">#02</div>
-              <div className="hero-tag-label">Création de Contenu</div>
-            </div>
-            <div className="hero-tag">
-              <div className="hero-tag-num">#03</div>
-              <div className="hero-tag-label">Gestion Réseaux Sociaux</div>
-            </div>
-            <div className="hero-tag">
-              <div className="hero-tag-num">#04</div>
-              <div className="hero-tag-label">Direction Créative</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* PARALLAX */}
       <ParallaxSection />
