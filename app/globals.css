@@ -439,8 +439,17 @@ nav {
   gap: 16px;
   max-width: 1200px;
   margin: 0 auto;
+  margin-top: 150;
 }
 .about-img-card {
+  aspect-ratio: 3 / 4;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  background: #1e1e1e;
+}
+
+.about-img-card1{
   aspect-ratio: 3 / 4;
   border-radius: 10px;
   overflow: hidden;

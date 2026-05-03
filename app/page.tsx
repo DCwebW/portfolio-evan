@@ -1,5 +1,6 @@
 import HeroSection from "./components/HeroSection";
 import ParallaxSection from "./components/ParallaxSection";
+import Projets from "./components/Projets";
 
 export default function Home() {
   return (
@@ -54,21 +55,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="about-images">
-          <div className="about-img-card">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/evan-photo.jpg" alt="Communication" />
-            <div className="img-label">Communication</div>
-          </div>
-          <div className="about-img-card">
-            <div className="placeholder-img">music<br />production</div>
-            <div className="img-label">Music Production</div>
-          </div>
-          <div className="about-img-card">
-            <div className="placeholder-img">direction<br />créative</div>
-            <div className="img-label">Direction Créative</div>
-          </div>
-        </div>
+        <Projets />
       </section>
 
       {/* PROJECTS */}
