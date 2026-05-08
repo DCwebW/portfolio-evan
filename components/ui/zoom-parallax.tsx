@@ -46,14 +46,34 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
   const labelY = useTransform(scrollYProgress, [0.05, 0.22], [18, 0]);
 
   if (isMobile) {
-    const central = images[0];
+    const visibleImages = images.filter((img) => img.label).slice(0, 4);
     return (
-      <div className="flex items-center justify-center py-12 px-6">
-        <img
-          src={central?.src || '/placeholder.svg'}
-          alt={central?.alt || 'Image'}
-          className="w-full max-w-sm rounded-xl object-cover aspect-video"
-        />
+      <div className="py-10 px-5">
+        <div className="grid grid-cols-2 gap-2">
+          {visibleImages.map((img, i) => (
+            <div key={i} className="relative aspect-video overflow-hidden rounded-xl">
+              <img
+                src={img.src}
+                alt={img.alt || `Image ${i + 1}`}
+                className="w-full h-full object-cover"
+                loading={i === 0 ? 'eager' : 'lazy'}
+              />
+              {img.label && (
+                <div
+                  className="absolute inset-0 flex items-end justify-center pb-3 pointer-events-none"
+                  style={{
+                    background:
+                      'linear-gradient(to top, rgba(180,30,30,0.55) 0%, rgba(180,30,30,0.18) 50%, transparent 100%)',
+                  }}
+                >
+                  <span className="relative z-10 text-white text-[10px] font-semibold tracking-widest uppercase text-center leading-tight px-2">
+                    {img.label}
+                  </span>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

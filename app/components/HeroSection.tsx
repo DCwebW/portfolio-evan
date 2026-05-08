@@ -1,8 +1,12 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
-import { useScroll, useTransform, motion } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from './Navbar';
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false);
@@ -19,92 +23,122 @@ function useIsMobile() {
 export default function HeroSection() {
   const isMobile = useIsMobile();
   const heroRef = useRef<HTMLElement>(null);
+  const titleWrapRef = useRef<HTMLDivElement>(null);
+  const quoteWrapRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const quoteRef = useRef<HTMLParagraphElement>(null);
 
-  // Scroll-driven exit : mesure quand le hero quitte le viewport par le haut
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ['start start', 'end start'],
-  });
+  useGSAP(() => {
+    if (isMobile) return;
 
-  // Les titres remontent et disparaissent sur les derniers 40% du scroll du hero
-  const yExit = useTransform(scrollYProgress, [0.55, 1], [0, -90]);
-  const opacityExit = useTransform(scrollYProgress, [0.55, 0.9], [1, 0]);
+    // Animations d'entrée
+    gsap.from(titleRef.current, {
+      y: 60,
+      opacity: 0,
+      duration: 0.75,
+      ease: 'power2.out',
+      delay: 0.1,
+    });
+    gsap.from(quoteRef.current, {
+      y: 60,
+      opacity: 0,
+      duration: 0.75,
+      ease: 'power2.out',
+      delay: 0.25,
+    });
 
-  // Décalage pour la citation (sort légèrement plus tôt)
-  const yExitQuote = useTransform(scrollYProgress, [0.5, 0.95], [0, -90]);
-  const opacityExitQuote = useTransform(scrollYProgress, [0.5, 0.85], [1, 0]);
+    // Scroll exit — titre
+    const titleTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      },
+    });
+    titleTl.set({}, {}, 1);
+    titleTl.to(titleWrapRef.current, { opacity: 0, ease: 'none', duration: 0.35 }, 0.55);
+    titleTl.to(titleWrapRef.current, { y: -90, ease: 'none', duration: 0.45 }, 0.55);
+
+    // Scroll exit — citation
+    const quoteTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      },
+    });
+    quoteTl.set({}, {}, 1);
+    quoteTl.to(quoteWrapRef.current, { opacity: 0, ease: 'none', duration: 0.35 }, 0.5);
+    quoteTl.to(quoteWrapRef.current, { y: -90, ease: 'none', duration: 0.45 }, 0.5);
+  }, { scope: heroRef, dependencies: [isMobile] });
 
   return (
-    <section id="hero" ref={heroRef}>
+    <section
+      id="hero"
+      ref={heroRef}
+      className="relative w-full h-screen min-h-[680px] flex flex-col overflow-hidden rounded-b-[48px] bg-[#0d1224]"
+    >
       <Navbar />
-      <div className="hero-bg" />
-      <div className="hero-overlay" />
 
-      <div className="hero-body">
-        <div className="hero-left">
-          <p className="hero-eyebrow">Hey, I&apos;m a</p>
+      {/* Photo de fond */}
+      <div
+        className="absolute inset-0 bg-cover bg-no-repeat z-0 opacity-75"
+        style={{ backgroundImage: "url('/evan-photo.jpg')", backgroundPosition: 'center 20%' }}
+      />
+
+      {/* Dégradé overlay */}
+      <div
+        className="absolute inset-0 z-[1]"
+        style={{
+          background: `
+            linear-gradient(to right, rgba(13,18,36,0.92) 0%, rgba(13,18,36,0.55) 40%, rgba(13,18,36,0.1) 70%, rgba(13,18,36,0) 100%),
+            linear-gradient(to top, rgba(13,18,36,1) 0%, rgba(13,18,36,0.7) 18%, transparent 45%)
+          `,
+        }}
+      />
+
+      {/* Corps principal */}
+      <div className="relative z-[2] flex-1 flex items-center justify-between px-5 md:px-6 lg:px-[52px] pb-7 md:pb-9 max-md:flex-col max-md:items-start max-md:justify-end max-md:gap-5">
+        <div className="max-w-full md:max-w-[520px]">
+          <p className="text-[15px] font-semibold text-[var(--red)] italic tracking-[0.3px] mb-2">
+
+          </p>
 
           {isMobile ? (
-            <h1 className="hero-title">
+            <h1 className="font-display font-black text-[clamp(28px,10vw,44px)] leading-[0.95] text-white tracking-[-1px]">
               Chargé de<br />Communication
             </h1>
           ) : (
-            // Wrapper scroll-driven (exit) + motion.h1 entry (bas → haut)
-            <motion.div style={{ y: yExit, opacity: opacityExit }}>
-              <motion.h1
-                className="hero-title"
-                initial={{ y: 60, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.75, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.1 }}
+            <div ref={titleWrapRef}>
+              <h1
+                ref={titleRef}
+                className="font-display font-black text-[clamp(40px,9vw,80px)] leading-[0.92] text-white tracking-[-2px]"
               >
                 Chargé de<br />Communication
-              </motion.h1>
-            </motion.div>
+              </h1>
+            </div>
           )}
         </div>
 
-        <div className="hero-right">
-          {isMobile ? (
-            <p className="hero-quote">
+        {/* Quote block — hidden on mobile, visible from md up */}
+        <div className="hidden md:block max-w-[300px] pb-3 flex-shrink-0">
+          <div ref={quoteWrapRef}>
+            <p
+              ref={quoteRef}
+              className="font-display font-extrabold text-[clamp(18px,2vw,22px)] text-white mb-3 leading-[1.25] tracking-[-0.3px]"
+            >
               Une bonne communication<br />doit être invisible.
             </p>
-          ) : (
-            // Même structure pour la citation, légèrement décalée
-            <motion.div style={{ y: yExitQuote, opacity: opacityExitQuote }}>
-              <motion.p
-                className="hero-quote"
-                initial={{ y: 60, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.75, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.25 }}
-              >
-                Une bonne communication<br />doit être invisible.
-              </motion.p>
-            </motion.div>
-          )}
-          <p className="hero-sub">Du logo au contenu, je construis des marques qui connectent et qui durent.</p>
+          </div>
+          <p className="text-[13px] font-normal text-white/50 leading-[1.75]">
+            Du logo au contenu, je construis des marques qui connectent et qui durent.
+          </p>
         </div>
       </div>
 
-      <div className="hero-tags-band">
-        <div className="hero-tags-inner">
-          <div className="hero-tag">
-            <div className="hero-tag-num">#01</div>
-            <div className="hero-tag-label">Stratégie Digitale</div>
-          </div>
-          <div className="hero-tag">
-            <div className="hero-tag-num">#02</div>
-            <div className="hero-tag-label">Création de Contenu</div>
-          </div>
-          <div className="hero-tag">
-            <div className="hero-tag-num">#03</div>
-            <div className="hero-tag-label">Gestion Réseaux Sociaux</div>
-          </div>
-          <div className="hero-tag">
-            <div className="hero-tag-num">#04</div>
-            <div className="hero-tag-label">Direction Créative</div>
-          </div>
-        </div>
-      </div>
+     
     </section>
   );
 }

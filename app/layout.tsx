@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, DM_Sans } from "next/font/google";
 import "./globals.css";
+import SmoothScrollProvider from "./components/SmoothScrollProvider";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -27,7 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className={`${manrope.variable} ${dmSans.variable}`}>
-      <body>{children}</body>
+      <body className="bg-[var(--light)] text-white font-body overflow-x-hidden">
+        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+      </body>
     </html>
   );
 }

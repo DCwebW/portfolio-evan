@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Lenis from 'lenis';
 import { ZoomParallax } from '@/components/ui/zoom-parallax';
 
 const images = [
@@ -42,22 +41,5 @@ const images = [
 ];
 
 export default function ParallaxSection() {
-  React.useEffect(() => {
-    if (window.matchMedia('(max-width: 768px)').matches) return;
-
-    const lenis = new Lenis();
-
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-
-    return () => {
-      lenis.destroy();
-    };
-  }, []);
-
   return <ZoomParallax images={images} />;
 }
