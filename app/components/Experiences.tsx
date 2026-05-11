@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -17,6 +18,10 @@ export default function Experiences() {
   const trustedRef = useRef<HTMLElement>(null);
   const projectsRef = useRef<HTMLElement>(null);
   const marqueeTrackRef = useRef<HTMLDivElement>(null);
+  const personalphotoRef=useRef<HTMLDivElement>(null)
+  const tlref=useRef<GSAPTimeline>(null)
+  const decorationPhoto=useRef<HTMLDivElement>(null)
+  const decorationPhoto2=useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
     // --- Marquee continu ---
@@ -27,29 +32,26 @@ export default function Experiences() {
       repeat: -1,
     });
 
-    // --- Section #projects ---
-    gsap.from(".projects-header h2", {
-      opacity: 0,
-      y: -40,
-      duration: 0.7,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: projectsRef.current,
-        start: "top 80%",
-      },
-    });
-
-    gsap.from(".project-card", {
-      opacity: 0,
-      y: 60,
-      duration: 0.7,
-      ease: "power3.out",
-      stagger: 0.2,
-      scrollTrigger: {
-        trigger: projectsRef.current,
-        start: "top 75%",
-      },
-    });
+   const photoanimation= gsap.timeline()
+   .from(personalphotoRef.current?.children ?? [],{
+      y:-100,
+      opacity:0,
+      duration:2,
+      stagger:{amount:1, from:"edges"},
+      ease:"power2.inOut"
+    })
+   
+  
+    ScrollTrigger.create({
+      trigger:personalphotoRef.current,
+      animation:photoanimation,
+      start:"top 100px",
+      end:"+=500px",
+      pin:true,
+     scrub:1,
+      pinSpacing:true,
+      markers:true
+    })
   });
 
   return (
@@ -80,59 +82,21 @@ export default function Experiences() {
         </div>
       </section>
 
-      {/* PROJECTS */}
-      <section
-        id="projects"
-        ref={projectsRef}
-        className="bg-[var(--light)] pt-16 md:pt-20 lg:pt-[120px] px-5 md:px-8 lg:px-[52px] pb-16 md:pb-[60px] lg:pb-[100px] -mt-8 relative z-0 rounded-b-[32px]"
-      >
-        <div className="projects-header max-w-[1200px] mx-auto mb-10 md:mb-14">
-          <h2 className="font-display font-black text-[clamp(28px,9vw,76px)] md:text-[clamp(36px,6vw,76px)] tracking-[-1px] md:tracking-[-2px] text-[#111] leading-none">
-            Projects
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 max-w-[1200px] mx-auto">
-          <div className="project-card bg-white rounded-[14px] p-6 md:p-8 lg:p-[40px_36px] flex flex-col gap-4 border border-black/[0.06] transition-[transform,box-shadow] duration-[250ms] cursor-default hover:-translate-y-[6px] hover:shadow-[0_24px_60px_rgba(0,0,0,0.10)]">
-            <div className="text-[11px] font-semibold text-[var(--red)] tracking-[2px] uppercase">01</div>
-            <div className="font-display font-black text-[clamp(24px,5vw,36px)] tracking-[-1px] text-[#111] leading-none">UIA</div>
-            <div className="text-sm text-[#555] font-normal leading-[1.5]">
-              Assistant Communication — gestion des relations médias, stratégie
-              digitale, rédaction de contenus et newsletters.
-            </div>
-            <div className="text-[12px] text-[#aaa] font-light mt-auto pt-4 border-t border-black/[0.07]">
-              <span className="inline-block text-[11px] py-[4px] px-3 rounded-full bg-[#b31b1b14] text-[var(--red)] font-medium tracking-[0.5px]">
-                2023 — 2025
-              </span>
-            </div>
-          </div>
-          <div className="project-card bg-white rounded-[14px] p-6 md:p-8 lg:p-[40px_36px] flex flex-col gap-4 border border-black/[0.06] transition-[transform,box-shadow] duration-[250ms] cursor-default hover:-translate-y-[6px] hover:shadow-[0_24px_60px_rgba(0,0,0,0.10)]">
-            <div className="text-[11px] font-semibold text-[var(--red)] tracking-[2px] uppercase">02</div>
-            <div className="font-display font-black text-[clamp(24px,5vw,36px)] tracking-[-1px] text-[#111] leading-none">Freddy Conduite</div>
-            <div className="text-sm text-[#555] font-normal leading-[1.5]">
-              Chargé de Communication — développement de la présence digitale,
-              community management, campagnes social media.
-            </div>
-            <div className="text-[12px] text-[#aaa] font-light mt-auto pt-4 border-t border-black/[0.07]">
-              <span className="inline-block text-[11px] py-[4px] px-3 rounded-full bg-[#b31b1b14] text-[var(--red)] font-medium tracking-[0.5px]">
-                2022 — 2023
-              </span>
-            </div>
-          </div>
-          <div className="project-card bg-white rounded-[14px] p-6 md:p-8 lg:p-[40px_36px] flex flex-col gap-4 border border-black/[0.06] transition-[transform,box-shadow] duration-[250ms] cursor-default hover:-translate-y-[6px] hover:shadow-[0_24px_60px_rgba(0,0,0,0.10)]">
-            <div className="text-[11px] font-semibold text-[var(--red)] tracking-[2px] uppercase">03</div>
-            <div className="font-display font-black text-[clamp(24px,5vw,36px)] tracking-[-1px] text-[#111] leading-none">Collector Music</div>
-            <div className="text-sm text-[#555] font-normal leading-[1.5]">
-              Producteur d&apos;Artiste — production musicale, développement d&apos;image
-              artistique, promotion digitale et management.
-            </div>
-            <div className="text-[12px] text-[#aaa] font-light mt-auto pt-4 border-t border-black/[0.07]">
-              <span className="inline-block text-[11px] py-[4px] px-3 rounded-full bg-[#b31b1b14] text-[var(--red)] font-medium tracking-[0.5px]">
-                Personnel
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
+<section className="bg-[var(--light)] , h-auto ">
+  <div className="flex  w-full mt-28  personalphoto" >
+
+<div className=" flex p-5 w-full items-center justify-center gap-3" ref={personalphotoRef} >
+{/* <div className="h-10 w-35 bg-red-100 absolute z-1 top-3.5 left-28" ref={decorationPhoto}></div>
+<div className="h-10 w-2xs bg-[var(--red)] absolute z-1 top-60 right-28" ref={decorationPhoto}></div> */}
+   <Image src={'/PhotoPortrait3.jpg'} alt="" width={400} height={700} className="rounded-2xl "/>
+    <Image src={'/PhotoPortrait2.jpg'} alt="" width={400} height={700} className="rounded-2xl "/>
+<Image src={'/PhotoPortrait1.jpg'} alt="" width={400} height={700} className="rounded-2xl "/>
+</div>
+   
+  </div>
+
+</section>
+      
     </>
   );
 }

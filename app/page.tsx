@@ -4,6 +4,7 @@ import HeroSection from "./components/HeroSection";
 import ParallaxSection from "./components/ParallaxSection";
 import Projets from "./components/Projets";
 import Experiences from "./components/Experiences";
+import Citation from "./components/Citation";
 
 export default function Home() {
   return (
@@ -54,6 +55,7 @@ export default function Home() {
 
       {/* EXPÉRIENCES */}
       <Experiences />
+      <Citation/>
 
       {/* FOOTER */}
       <footer

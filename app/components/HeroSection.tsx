@@ -33,11 +33,12 @@ export default function HeroSection() {
 
     // Animations d'entrée
     gsap.from(titleRef.current, {
-      y: 60,
+      y: 100,
       opacity: 0,
-      duration: 0.75,
+      duration: 8,
       ease: 'power2.out',
       delay: 0.1,
+     
     });
     gsap.from(quoteRef.current, {
       y: 60,
