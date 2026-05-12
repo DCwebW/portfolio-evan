@@ -46,10 +46,10 @@ export default function Experiences() {
       trigger:personalphotoRef.current,
       animation:photoanimation,
       start:"top 100px",
-      end:"+=500px",
+      end:"+=200px",
       pin:true,
      scrub:1,
-      pinSpacing:true,
+
       markers:true
     })
   });

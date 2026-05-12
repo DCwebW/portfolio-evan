@@ -79,18 +79,18 @@ export default function HeroSection() {
     <section
       id="hero"
       ref={heroRef}
-      className="relative w-full h-screen min-h-[680px] flex flex-col overflow-hidden rounded-b-[48px] bg-[#0d1224]"
+      className="relative w-full h-screen min-h-[680px] flex flex-col overflow-hidden rounded-b-[48px] "
     >
       <Navbar />
 
       {/* Photo de fond */}
       <div
-        className="absolute inset-0 bg-cover bg-no-repeat z-0 opacity-75"
-        style={{ backgroundImage: "url('/evan-photo.jpg')", backgroundPosition: 'center 20%' }}
+        className="absolute inset-0 bg-cover bg-no-repeat z-0 "
+        style={{ backgroundImage: "url('/Evan-Photo.png')", backgroundPosition: 'center 20%' }}
       />
 
       {/* Dégradé overlay */}
-      <div
+      {/* <div
         className="absolute inset-0 z-[1]"
         style={{
           background: `
@@ -98,7 +98,7 @@ export default function HeroSection() {
             linear-gradient(to top, rgba(13,18,36,1) 0%, rgba(13,18,36,0.7) 18%, transparent 45%)
           `,
         }}
-      />
+      /> */}
 
       {/* Corps principal */}
       <div className="relative z-[2] flex-1 flex items-center justify-between px-5 md:px-6 lg:px-[52px] pb-7 md:pb-9 max-md:flex-col max-md:items-start max-md:justify-end max-md:gap-5">
@@ -130,11 +130,11 @@ export default function HeroSection() {
               ref={quoteRef}
               className="font-display font-extrabold text-[clamp(18px,2vw,22px)] text-white mb-3 leading-[1.25] tracking-[-0.3px]"
             >
-              Une bonne communication<br />doit être invisible.
+              Donner du rythme aux idées
             </p>
           </div>
           <p className="text-[13px] font-normal text-white/50 leading-[1.75]">
-            Du logo au contenu, je construis des marques qui connectent et qui durent.
+            Entre vidéos, design et communication digitale , je crée des contenus qui attirent, qui marquent 
           </p>
         </div>
       </div>

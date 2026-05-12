@@ -23,10 +23,10 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start max-w-[1200px] mx-auto lg:mb-16">
           <div>
             <span className="inline-block text-[11px] font-semibold text-[var(--red)] uppercase tracking-[2px] mb-6">
-              Behind the Designs
+              Entre Vidéo, Design et Marketing Digital
             </span>
             <h2 className="font-display font-black text-[clamp(28px,8vw,68px)] md:text-[clamp(36px,6vw,68px)] leading-[0.95] tracking-[-1px] md:tracking-[-1.5px] text-white">
-              Shaping<br />Experiences That<br />Make Life Simpler
+              Créer<br />des messages <br />qui donnent du sens et de la visibilité 
             </h2>
           </div>
           <div className="flex flex-col gap-5 lg:pt-14">
