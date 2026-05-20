@@ -5,8 +5,17 @@ import ParallaxSection from "./components/ParallaxSection";
 import Projets from "./components/Projets";
 import Experiences from "./components/Experiences";
 import Citation from "./components/Citation";
+import ContactButton from "./components/ContactButton";
+import gsap from "gsap";
+import SplitText from "gsap/src/SplitText";
+import ScrollTrigger from "gsap/src/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import Introduction from "./components/Introduction";
+
 
 export default function Home() {
+
+
   return (
     <>
       {/* HERO */}
@@ -16,7 +25,7 @@ export default function Home() {
       <ParallaxSection />
 
       {/* ABOUT */}
-      <section
+      {/* <section
         id="about"
         className="bg-[var(--dark)] pt-16 md:pt-20 lg:pt-[120px] px-5 md:px-8 lg:px-[52px] pb-16 md:pb-20 lg:pb-[100px] -mt-8 relative z-0"
       >
@@ -39,16 +48,14 @@ export default function Home() {
               Disponible en poste et en freelance, je combine vision créative et
               approche data-driven pour des résultats mesurables.
             </p>
-            <a
-              className="inline-flex items-center gap-2 bg-[var(--red)] text-white border-none py-3 px-[26px] rounded-full text-sm font-medium cursor-pointer no-underline self-start mt-2 min-h-[44px] transition-[background,transform] duration-200 hover:bg-[var(--red-hover)] hover:scale-[1.04] focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-              href="#footer"
-            >
-              Get in touch →
-            </a>
+           
+            <ContactButton color={"blanc"}/>
           </div>
         </div>
 
-      </section>
+      </section> */}
+
+      <Introduction/>
 
       {/* PROJETS */}
       <Projets />
