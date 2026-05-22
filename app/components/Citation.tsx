@@ -10,33 +10,33 @@ function Citation() {
     const tlRef = useRef<GSAPTimeline | null>(null)
     const containerTextRef = useRef<HTMLElement>(null)
 
-   useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger, TextPlugin)
+//    useGSAP(() => {
+//     gsap.registerPlugin(ScrollTrigger, TextPlugin)
 
-    tlRef.current = gsap.timeline()
-        .from(".redbar", { width: 0, duration: 1, ease: "power1.in" })
-        .to(".changetext", { text: "Communication", duration: 1 })
-        .to(".changetext", { text: "Stratégie", duration: 1 })
-        .to(".changetext", { text: "Marque", duration: 1 })
-        .to(".changetext", { text: "Histoire", duration: 1 })
-        .fromTo(".contactbutton",
-            { x: 60, opacity: 0 },
-            { x: 0, opacity: 1, duration: 1, ease: "power1.inOut" }
-        )
+//     tlRef.current = gsap.timeline()
+//         .from(".redbar", { width: 0, duration: 1, ease: "power1.in" })
+//         .to(".changetext", { text: "Communication", duration: 1 })
+//         .to(".changetext", { text: "Stratégie", duration: 1 })
+//         .to(".changetext", { text: "Marque", duration: 1 })
+//         .to(".changetext", { text: "Histoire", duration: 1 })
+//         .fromTo(".contactbutton",
+//             { x: 60, opacity: 0 },
+//             { x: 0, opacity: 1, duration: 1, ease: "power1.inOut" }
+//         )
 
-    ScrollTrigger.create({
-        trigger: containerTextRef.current,
-        animation: tlRef.current,
-        start: "top 80%",  // 👈 relatif au viewport, plus fiable
-        end: "+=1000",
-        scrub: 1,
-        markers: true,
-    })
+//     ScrollTrigger.create({
+//         trigger: containerTextRef.current,
+//         animation: tlRef.current,
+//         start: "top 80%",  // 👈 relatif au viewport, plus fiable
+//         end: "+=1000",
+//         scrub: 1,
+//         markers: true,
+//     })
 
-    // 👇 Force le recalcul après le rendu complet
-    ScrollTrigger.refresh()
+//     // 👇 Force le recalcul après le rendu complet
+//     ScrollTrigger.refresh()
 
-}, { scope: containerTextRef })
+// }, { scope: containerTextRef })
 
     return (
         <section className='flex gap-15 justify-center  mt-11 h-190  p-5' ref={containerTextRef}>

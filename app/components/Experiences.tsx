@@ -33,20 +33,20 @@ export default function Experiences() {
       repeat: -1,
     });
 
-  gsap.from(personalphotoRef.current?.children ?? [], {
-      y: 80,
-      opacity: 0,
-      duration: 1.2,
-      stagger: { amount: 0.6, from: "edges" },
-      ease: "power3.out",
-      // Changer start dans le scrollTrigger des photos
-scrollTrigger: {
-    trigger: photoSectionRef.current,
-    start: "top 80%",   // 👈 relatif au viewport
-    end: "bottom 60%",
-    toggleActions: "play none none reverse",
-}
-    });
+//   gsap.from(personalphotoRef.current?.children ?? [], {
+//       y: 80,
+//       opacity: 0,
+//       duration: 1.2,
+//       stagger: { amount: 0.6, from: "edges" },
+//       ease: "power3.out",
+//       // Changer start dans le scrollTrigger des photos
+// scrollTrigger: {
+//     trigger: photoSectionRef.current,
+//     start: "top 80%",   // 👈 relatif au viewport
+//     end: "bottom 60%",
+//     toggleActions: "play none none reverse",
+// }
+//     });
 
   });
 
