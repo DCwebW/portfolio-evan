@@ -85,9 +85,9 @@ export default function Experiences() {
 <div className=" flex p-5 w-full items-center justify-center gap-3 mb-20" ref={personalphotoRef} >
 {/* <div className="h-10 w-35 bg-red-100 absolute z-1 top-3.5 left-28" ref={decorationPhoto}></div>
 <div className="h-10 w-2xs bg-[var(--red)] absolute z-1 top-60 right-28" ref={decorationPhoto}></div> */}
-   <Image src={'/PhotoEvan(part3).png'} alt="" width={450} height={150} className="rounded-2xl "/>
-    <Image src={'/PhotoEvan(part2).png'} alt="" width={450} height={150} className="rounded-2xl "/>
-<Image src={'/PhotoEvan(part1).png'} alt="" width={450} height={150} className="rounded-2xl "/>
+   <Image src={'/PhotoEvan(part3).png'} alt="" width={0} height={0} className="rounded-2xl h-[700px] w-[450px] object-cover"/>
+    <Image src={'/PhotoEvan(part2).png'} alt="" width={0} height={0} className="rounded-2xl h-[700px] w-[450px] object-cover"/>
+<Image src={'/PhotoEvan(part1).png'} alt="" width={0} height={0} className="rounded-2xl h-[700px] w-[450px] object-cover"/>
 </div>
    
   </div>
