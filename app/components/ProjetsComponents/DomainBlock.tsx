@@ -8,14 +8,16 @@ import SplitText from "gsap/src/SplitText";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP, SplitText);
 
-export function DomainBlock({ tag, label, children }: {
+export function DomainBlock({ tag, label, children,allprojects }: {
   tag: string;
   label: string;
   children: React.ReactNode;
+  allprojects: string
 }) {
   const blockRef = useRef<HTMLDivElement>(null);
   const tagRef = useRef<HTMLSpanElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const allProjectsRef= useRef<HTMLLinkElement>(null)
 
   useGSAP(() => {
     const el = blockRef.current;
@@ -63,6 +65,7 @@ export function DomainBlock({ tag, label, children }: {
 
   return (
     <div ref={blockRef} className="flex flex-col gap-4 md:gap-6">
+      <div className="justify-between flex items-center">
       <div className="flex flex-wrap items-baseline gap-2 md:gap-4">
         <span ref={tagRef} className="text-[11px] font-semibold text-(--red) uppercase tracking-[2px] flex-shrink-0">
           {tag}
@@ -73,7 +76,14 @@ export function DomainBlock({ tag, label, children }: {
         >
           {label}
         </h3>
+      </div> 
+      <div>
+        <span ref={allProjectsRef} className="text-red-700 text-2xl cursor-pointer hover:underline">
+          {allprojects}
+        </span>
+          </div> 
       </div>
+      
       {children}
     </div>
   );

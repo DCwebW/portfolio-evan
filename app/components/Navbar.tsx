@@ -52,7 +52,7 @@ export default function Navbar() {
             className="text-sm font-normal text-white/65 no-underline tracking-[0.3px] transition-colors duration-200 hover:text-white focus:outline-none focus-visible:text-white"
             href="#hero"
           >
-            Home
+           Accueil
           </a>
         </li>
         <li>
@@ -60,7 +60,7 @@ export default function Navbar() {
             className="text-sm font-normal text-white/65 no-underline tracking-[0.3px] transition-colors duration-200 hover:text-white focus:outline-none focus-visible:text-white"
             href="#about"
           >
-            About
+           A propos
           </a>
         </li>
         <li>
@@ -68,7 +68,7 @@ export default function Navbar() {
             className="text-sm font-normal text-white/65 no-underline tracking-[0.3px] transition-colors duration-200 hover:text-white focus:outline-none focus-visible:text-white"
             href="#projects"
           >
-            Projects
+            Projets
           </a>
         </li>
         <li>
