@@ -15,11 +15,6 @@ export type VideoInfo ={
   
 }
 
-export type ImageInfo={
-  src:string, 
-  title: string;
-  description: string 
-}
 
 const VIDEO_META = [
   {
@@ -50,11 +45,7 @@ const VIDEO_META = [
 
 ]
 
-const IMAGE_META=[
-  {
 
-  },{},{},{},{},{},{},{}
-]
 
 export default function Projets() {
   const [images, setImages] = useState<ListBlobResultBlob[]>([]);

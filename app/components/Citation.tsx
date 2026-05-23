@@ -44,22 +44,17 @@ function Citation() {
             <div className='rounded-3xl w-130 h-150 photo-citation bg-[url(/PhotoEvan&Felicia.jpeg)] bg-cover'/>
             <div className="w-2xl ">
                 
-                <div className='h-80'></div>
-                <div className='bg-(--red) w-[580px] h-2 rounded-2xl mb-6 redbar'></div>
-                <h1 className=" text-black italic font-bold text-4xl md:text-5xl lg:text-[3rem]" style={{
+                <div className='h-70'></div>
+                <div className='bg-(--red) w-[550px] h-2 rounded-2xl mb-6 redbar'></div>
+                <h1 className=" text-black italic font-bold text-4xl md:text-5xl lg:text-[2rem]" style={{
                     
                     fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" 
                 }}>
                     Reprenez le controle de votre
                 </h1>
-                <h1 className="text-5xl text-red-800 font-bold changetext">Image</h1>
-                {/* <a
-              className="inline-flex items-center gap-2 bg-[var(--red)] text-white border-none py-3 px-[26px] rounded-full text-sm font-medium cursor-pointer no-underline self-start mt-2 min-h-[44px] transition-[background,transform] duration-200 hover:bg-[var(--red-hover)] hover:scale-[1.04] focus:outline-none focus-visible:ring-2 focus-visible:ring-white
-              contactbutton"
-              href="#footer"
-            >
-              Get in touch →
-            </a> */}
+                <h1 className="text-4xl text-red-800 font-bold changetext">Image</h1>
+                <p className='text-black/70 text-[16px] w-96 mt-6 leading-6'>Je développe une communication moderne, fluide et impactante, pensée pour capter l’attention et créer un vrai lien avec les audiences. 
+                  </p>
 <div className='mt-3'>
  <ContactButton color={'rouge'}/>
 </div>

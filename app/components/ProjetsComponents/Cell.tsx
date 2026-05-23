@@ -31,8 +31,8 @@ export function Cell({ featured, children, info }: {
     gsap.to(cellRef.current, { scale: 1, zIndex: 1, duration: 0.35, ease: "power2.inOut" });
     gsap.to(tooltipRef.current, {
       opacity: 0,
-      y: 12,
-      duration: 0.2,
+      y: 30,
+      duration: 1,
       ease: "power2.in",
     });
   };
