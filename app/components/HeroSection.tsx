@@ -89,16 +89,7 @@ export default function HeroSection() {
         style={{ backgroundImage: "url('/Evan-Photo.png')", backgroundPosition: 'center 20%' }}
       />
 
-      {/* Dégradé overlay */}
-      {/* <div
-        className="absolute inset-0 z-[1]"
-        style={{
-          background: `
-            linear-gradient(to right, rgba(13,18,36,0.92) 0%, rgba(13,18,36,0.55) 40%, rgba(13,18,36,0.1) 70%, rgba(13,18,36,0) 100%),
-            linear-gradient(to top, rgba(13,18,36,1) 0%, rgba(13,18,36,0.7) 18%, transparent 45%)
-          `,
-        }}
-      /> */}
+    
 
       {/* Corps principal */}
       <div className="relative z-[2] flex-1 flex items-center justify-between px-5 md:px-6 lg:px-[52px] pb-7 md:pb-9 max-md:flex-col max-md:items-start max-md:justify-end max-md:gap-5">

@@ -65,25 +65,23 @@ export function DomainBlock({ tag, label, children,allprojects }: {
 
   return (
     <div ref={blockRef} className="flex flex-col gap-4 md:gap-6">
-      <div className="justify-between flex items-center">
-      <div className="flex flex-wrap items-baseline gap-2 md:gap-4">
-        <span ref={tagRef} className="text-[11px] font-semibold text-(--red) uppercase tracking-[2px] flex-shrink-0">
-          {tag}
-        </span>
+      <div>
+        <div className="flex items-center justify-between gap-3 mb-2 md:mb-3">
+          <span ref={tagRef} className="text-[11px] font-semibold text-(--red) uppercase tracking-[2px]">
+            {tag}
+          </span>
+          <span ref={allProjectsRef} className="text-red-700 text-xs md:text-sm cursor-pointer hover:underline shrink-0">
+            {allprojects}
+          </span>
+        </div>
         <h3
           ref={titleRef}
-          className="font-display font-black text-[clamp(24px,6vw,52px)] md:text-[clamp(28px,4vw,52px)] tracking-[-1px] text-white leading-none"
+          className="font-display font-black text-[clamp(28px,8vw,72px)] tracking-[-1px] text-white leading-none"
         >
           {label}
         </h3>
-      </div> 
-      <div>
-        <span ref={allProjectsRef} className="text-red-700 text-2xl cursor-pointer hover:underline">
-          {allprojects}
-        </span>
-          </div> 
       </div>
-      
+
       {children}
     </div>
   );

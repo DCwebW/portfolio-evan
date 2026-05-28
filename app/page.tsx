@@ -11,6 +11,8 @@ import SplitText from "gsap/src/SplitText";
 import ScrollTrigger from "gsap/src/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Introduction from "./components/Introduction";
+import DemonstrationProcessus from "./components/Demonstration/DemonstrationProcessus";
+import ListeDemonstration from "./components/Demonstration/ListeDemonstration";
 
 
 export default function Home() {
@@ -63,11 +65,12 @@ export default function Home() {
       {/* EXPÉRIENCES */}
       <Experiences />
       <Citation/>
+      <ListeDemonstration/>
 
       {/* FOOTER */}
       <footer
         id="footer"
-        className="bg-[var(--dark)] pt-12 md:pt-[72px] px-5 md:px-8 lg:px-[52px] pb-9 md:pb-[52px] border-t border-[var(--border)] -mt-8 relative z-0"
+        className="bg-[var(--dark)] pt-12 md:pt-[72px] px-5 md:px-8 lg:px-[52px] pb-9 md:pb-[52px] border-t border-[var(--border)] -mt-8 relative z-10"
       >
         <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-5 md:gap-6 flex-wrap">
           <span className="font-display font-black text-lg tracking-[1px] text-[var(--red)]">

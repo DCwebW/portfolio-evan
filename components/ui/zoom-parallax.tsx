@@ -29,8 +29,10 @@ function useIsMobile() {
 export function ZoomParallax({ images }: ZoomParallaxProps) {
   const isMobile = useIsMobile();
   const container = useRef(null);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
   const { scrollYProgress } = useScroll({
-    target: container,
+    target: mounted ? container : undefined,
     offset: ['start start', 'end end'],
   });
 
@@ -48,7 +50,7 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
   if (isMobile) {
     const visibleImages = images.filter((img) => img.label).slice(0, 4);
     return (
-      <div className="py-10 px-5">
+      <div className="py-10 px-5 bg-amber-50">
         <div className="grid grid-cols-2 gap-2">
           {visibleImages.map((img, i) => (
             <div key={i} className="relative aspect-video overflow-hidden rounded-xl">
@@ -79,8 +81,8 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
   }
 
   return (
-    <div ref={container} className="relative h-[400vh]">
-      <div className="sticky top-0 h-screen overflow-hidden">
+    <div ref={container} className="relative h-[400vh] bg-white">
+      <div className="sticky top-0 h-screen overflow-hidden bg-white">
         {images.map(({ src, alt, label }, index) => {
           const scale = scales[index % scales.length];
 

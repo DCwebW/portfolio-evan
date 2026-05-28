@@ -79,19 +79,20 @@ export default function Experiences() {
         </div>
       </section>
 
-<section className="bg-[var(--light)] , h-auto z-0" ref={photoSectionRef}>
-  <div className="flex  w-full mt-28  personalphoto" >
-
-<div className=" flex p-5 w-full items-center justify-center gap-3 mb-20" ref={personalphotoRef} >
-{/* <div className="h-10 w-35 bg-red-100 absolute z-1 top-3.5 left-28" ref={decorationPhoto}></div>
-<div className="h-10 w-2xs bg-[var(--red)] absolute z-1 top-60 right-28" ref={decorationPhoto}></div> */}
-   <Image src={'/PhotoEvan(part3).png'} alt="" width={0} height={0} className="rounded-2xl h-[700px] w-[450px] object-cover"/>
-    <Image src={'/PhotoEvan(part2).png'} alt="" width={0} height={0} className="rounded-2xl h-[700px] w-[450px] object-cover"/>
-<Image src={'/PhotoEvan(part1).png'} alt="" width={0} height={0} className="rounded-2xl h-[700px] w-[450px] object-cover"/>
-</div>
-   
+<section className="bg-[var(--light)] h-auto z-0" ref={photoSectionRef}>
+  <div className="w-full mt-12 md:mt-20 lg:mt-28">
+    <div className="flex flex-row p-3 sm:p-5 w-full items-center justify-center gap-2 sm:gap-3 mb-10 md:mb-16 lg:mb-20" ref={personalphotoRef}>
+      <div className="relative w-[29vw] h-[40vw] sm:w-1/3 sm:h-auto sm:aspect-9/13 rounded-xl sm:rounded-2xl overflow-hidden shrink-0">
+        <Image src="/PhotoEvan(part3).png" alt="" fill sizes="(max-width: 640px) 29vw, 33vw" className="object-cover" />
+      </div>
+      <div className="relative w-[29vw] h-[40vw] sm:w-1/3 sm:h-auto sm:aspect-9/13 rounded-xl sm:rounded-2xl overflow-hidden shrink-0">
+        <Image src="/PhotoEvan(part2).png" alt="" fill sizes="(max-width: 640px) 29vw, 33vw" className="object-cover" />
+      </div>
+      <div className="relative w-[29vw] h-[40vw] sm:w-1/3 sm:h-auto sm:aspect-9/13 rounded-xl sm:rounded-2xl overflow-hidden shrink-0">
+        <Image src="/PhotoEvan(part1).png" alt="" fill sizes="(max-width: 640px) 29vw, 33vw" className="object-cover" />
+      </div>
+    </div>
   </div>
-
 </section>
       
     </>

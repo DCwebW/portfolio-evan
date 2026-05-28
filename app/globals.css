@@ -23,6 +23,7 @@ html {
 
 body {
   overflow-x: clip;
+  background-color: var(--light);
 }
 
 /* Respect prefers-reduced-motion for drawer and transitions */
