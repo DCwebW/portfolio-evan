@@ -26,8 +26,9 @@ const DemonstrationListe = () => {
   ScrollTrigger.create({
     trigger: containerRef.current,
     animation: tlRef.current,
-    start: "top 90%",
+    start: "20% 80%",
     toggleActions: "play none none reverse",
+    markers:true
   })
 }, { scope: containerRef })
 

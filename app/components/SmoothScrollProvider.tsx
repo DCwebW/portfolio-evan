@@ -13,18 +13,22 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
 
     const lenis = new Lenis();
 
-    // Connecte Lenis à ScrollTrigger : chaque tick Lenis met à jour ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 
-    // Remplace le RAF manuel par le ticker GSAP pour que les deux soient synchronisés
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
+    const tick = (time: number) => lenis.raf(time * 1000);
+    gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
+
+    const stopLenis = () => lenis.stop();
+    const startLenis = () => lenis.start();
+    window.addEventListener("lenis:stop", stopLenis);
+    window.addEventListener("lenis:start", startLenis);
 
     return () => {
       lenis.destroy();
-      gsap.ticker.remove((time) => lenis.raf(time * 1000));
+      gsap.ticker.remove(tick);
+      window.removeEventListener("lenis:stop", stopLenis);
+      window.removeEventListener("lenis:start", startLenis);
     };
   }, []);
 
