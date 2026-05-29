@@ -24,7 +24,7 @@ export const demonstrationData: Demonstration[] = [
     titre: "Plan Stratégique",
     explication:
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    image: "/PlanStrategique.png", 
+    image: "/StratégieProcessus.png", 
     alt:"Illustration de l'étape du plan stratégique",
   },
   {
@@ -32,7 +32,7 @@ export const demonstrationData: Demonstration[] = [
     titre: "Pratique",
     explication:
       "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.",
-    image: "/Pratique.png",
+    image: "/PratiqueProcessus.png",
     alt: "Illustration de l'étape de mise en pratique",
   },
   {
@@ -40,7 +40,7 @@ export const demonstrationData: Demonstration[] = [
     titre: "Bilan",
     explication:
       "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.",
-    image: "/Bilan.png",
+    image: "/BilanProcessus.png",
     alt: "Illustration de l'étape de bilan",
   },
 ];
