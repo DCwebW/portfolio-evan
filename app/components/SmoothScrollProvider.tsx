@@ -5,10 +5,9 @@ import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     if (window.matchMedia("(max-width: 768px)").matches) return;
 
     const lenis = new Lenis();
