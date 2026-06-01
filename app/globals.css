@@ -18,7 +18,18 @@
 
 html {
   scroll-behavior: smooth;
-  cursor: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html {
+    cursor: none;
+  }
+}
+
+@media (hover: none) {
+  .tooltip-desktop-only {
+    display: none !important;
+  }
 }
 
 body {

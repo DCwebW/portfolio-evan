@@ -8,7 +8,16 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 export default function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    if (window.matchMedia("(max-width: 768px)").matches) return;
+
+    if (window.matchMedia("(max-width: 768px)").matches) {
+      const refresh = () => ScrollTrigger.refresh();
+      if (document.readyState === "complete") {
+        refresh();
+      } else {
+        window.addEventListener("load", refresh, { once: true });
+      }
+      return () => {};
+    }
 
     const lenis = new Lenis();
 

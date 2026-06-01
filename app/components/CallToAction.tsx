@@ -11,7 +11,7 @@ function CallToAction() {
 
           {/* Grande carte — image de fond à remplacer */}
           <div
-            className="rounded-[20px] relative overflow-hidden h-[240px] sm:h-[280px] md:h-[500px] flex-1"
+            className="rounded-[20px] relative overflow-hidden min-h-60 sm:h-70 md:h-125 w-full sm:flex-1"
             style={{
               backgroundImage: 'url(/ImageVille.jpg)',
               backgroundSize: 'cover',
@@ -30,7 +30,7 @@ function CallToAction() {
 
           {/* Petite carte — image de fond à remplacer */}
           <div
-            className="rounded-[20px]  relative overflow-hidden h-[200px] sm:h-[280px] md:h-[500px] sm:w-50 md:w-70 sm:shrink-0"
+            className="rounded-[20px] relative overflow-hidden min-h-50 sm:h-70 md:h-125 w-full sm:w-50 md:w-70 sm:shrink-0"
             style={{
               backgroundImage: 'url(/ImageDaryl.jpg)',
               backgroundSize: 'cover',
@@ -39,7 +39,7 @@ function CallToAction() {
             }}
           >
             {/* <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" /> */}
-            <div className="absolute bottom-4 left-12 justify-center flex ">
+            <div className="absolute bottom-4 inset-x-0 flex justify-center">
               <ContactButton color="rouge" />
             </div>
           </div>

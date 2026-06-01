@@ -12,7 +12,7 @@ export const  ImageTooltip= forwardRef<HTMLDivElement,{info:ImageInfo}>(
   return createPortal(
     <div
     ref={ref}
-    className='fixed top-0 left-0 z-50 pointer-events-none'
+    className='tooltip-desktop-only fixed top-0 left-0 z-50 pointer-events-none'
     style={{
       opacity:0,
       transform:"translate(0px, 0px) scale(0.9)",

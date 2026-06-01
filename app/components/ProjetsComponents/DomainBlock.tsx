@@ -23,30 +23,61 @@ export function DomainBlock({ tag, label, children,allprojects }: {
     const el = blockRef.current;
     if (!el || !tagRef.current || !titleRef.current) return;
 
-    gsap.from(tagRef.current, {
-      opacity: 0,
-      y: 16,
-      ease: "none",
-      scrollTrigger: {
-        trigger: el,
-        start: "top 85%",
-        end: "top 60%",
-        scrub: 1,
-      },
+    const split = new SplitText(titleRef.current, { type: "chars" });
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 769px)", () => {
+      gsap.from(tagRef.current, {
+        opacity: 0,
+        y: 16,
+        ease: "none",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%",
+          end: "top 60%",
+          scrub: 1,
+        },
+      });
+
+      gsap.from(split.chars, {
+        opacity: 0,
+        y: 48,
+        ease: "none",
+        stagger: 0.04,
+        scrollTrigger: {
+          trigger: el,
+          start: "top 80%",
+          end: "top 40%",
+          scrub: 1,
+        },
+      });
     });
 
-    const split = new SplitText(titleRef.current, { type: "chars" });
-    gsap.from(split.chars, {
-      opacity: 0,
-      y: 48,
-      ease: "none",
-      stagger: 0.04,
-      scrollTrigger: {
-        trigger: el,
-        start: "top 80%",
-        end: "top 40%",
-        scrub: 1,
-      },
+    mm.add("(max-width: 768px)", () => {
+      gsap.from(tagRef.current, {
+        opacity: 0,
+        y: 16,
+        duration: 0.5,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 90%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      gsap.from(split.chars, {
+        opacity: 0,
+        y: 32,
+        duration: 0.6,
+        ease: "power2.out",
+        stagger: 0.03,
+        scrollTrigger: {
+          trigger: el,
+          start: "top 88%",
+          toggleActions: "play none none none",
+        },
+      });
     });
 
     gsap.from(el.querySelectorAll(".js-cell"), {
@@ -57,10 +88,15 @@ export function DomainBlock({ tag, label, children,allprojects }: {
       stagger: 0.08,
       scrollTrigger: {
         trigger: el,
-        start: "top 75%",
+        start: "top 80%",
         toggleActions: "play none none none",
       },
     });
+
+    return () => {
+      split.revert();
+      mm.revert();
+    };
   }, { scope: blockRef });
 
   return (

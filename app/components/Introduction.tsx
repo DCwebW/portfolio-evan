@@ -20,28 +20,41 @@ useGSAP(() => {
 
     const split = new SplitText(h2Ref.current, { type: "lines" })
 
-    tlRef.current = gsap.timeline({ id: "paragraphe-3d" })
-        .from(split.lines, {
-            opacity: 0,
-            stagger: 0.3,
-            // rotationX: -90,
-            // rotationY: -45,
-            // transformOrigin: "50% 50% -150",
-            y:-90
-        })
+    const mm = gsap.matchMedia()
 
-    ScrollTrigger.create({
-        trigger: containerText.current,
-        animation: tlRef.current,
-        start: "top 100px",
-        end: "+=500",
-        scrub: 1,        // 👈 lie l'animation au scroll
-        pin: true,
-        pinSpacing: true,
+    mm.add("(min-width: 769px)", () => {
+        tlRef.current = gsap.timeline({ id: "paragraphe-3d" })
+            .from(split.lines, {
+                opacity: 0,
+                stagger: 0.3,
+                y: -90
+            })
+
+        ScrollTrigger.create({
+            trigger: containerText.current,
+            animation: tlRef.current,
+            start: "top 100px",
+            end: "+=500",
+            scrub: 1,
+            pin: true,
+            pinSpacing: true,
+        })
     })
 
-    // Cleanup au démontage
-    return () => split.revert()
+    mm.add("(max-width: 768px)", () => {
+        gsap.from(split.lines, {
+            opacity: 0,
+            y: 30,
+            stagger: 0.15,
+            duration: 0.6,
+            ease: "power2.out",
+        })
+    })
+
+    return () => {
+        split.revert()
+        mm.revert()
+    }
 
 }, { scope: containerText })
     

@@ -6,9 +6,10 @@ import { forwardRef } from "react"
 export const VideoTooltip= forwardRef<HTMLDivElement,{info: VideoInfo}>(
     ({info}, ref)=> {
     return (
-        <div 
+        <div
         ref={ref}
         className="
+        tooltip-desktop-only
         absolute bottom-4 left-4 right-4
         bg-black/80 backdrop-blur-sm
         rounded-xl p-4

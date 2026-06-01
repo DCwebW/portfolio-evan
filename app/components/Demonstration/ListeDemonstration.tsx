@@ -11,33 +11,52 @@ gsap.registerPlugin(ScrollTrigger)
 
 const DemonstrationListe = () => {
 
-  const containerRef= useRef<HTMLDivElement>(null)
-  const tlRef= useRef<GSAPTimeline>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const tlRef = useRef<GSAPTimeline>(null)
 
- useGSAP(() => {
-  tlRef.current = gsap.timeline().from(".demo-item", {
-    x: -50,
-    opacity: 0,
-    duration: 1,
-    stagger: { amount: 1 },
-    ease: "power2.inOut",
-  })
+  useGSAP(() => {
+    const mm = gsap.matchMedia();
 
-  ScrollTrigger.create({
-    trigger: containerRef.current,
-    animation: tlRef.current,
-    start: "20% 80%",
-    toggleActions: "play none none reverse",
-    markers:true
-  })
-}, { scope: containerRef })
+    mm.add("(min-width: 769px)", () => {
+      tlRef.current = gsap.timeline().from(".demo-item", {
+        x: -50,
+        opacity: 0,
+        duration: 1,
+        stagger: { amount: 1 },
+        ease: "power2.inOut",
+      });
+
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        animation: tlRef.current,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      });
+    });
+
+    mm.add("(max-width: 768px)", () => {
+      gsap.from(".demo-item", {
+        y: 30,
+        opacity: 0,
+        duration: 0.5,
+        stagger: { amount: 0.4 },
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 90%",
+          toggleActions: "play none none none",
+        },
+      });
+    });
+
+    return () => mm.revert();
+  }, { scope: containerRef })
 
 
   return (
     <section className='bg-white flex flex-wrap items-center justify-center gap-3 sm:gap-5 p-3 sm:p-7' ref={containerRef}>
       {demonstrationData.map((item) => (
         <DemonstrationProcessus
-        
           key={item.nombre}
           nombre={item.nombre}
           titre={item.titre}
