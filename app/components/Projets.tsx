@@ -5,6 +5,8 @@ import { Cell } from "./ProjetsComponents/Cell";
 import { DomainBlock } from "./ProjetsComponents/DomainBlock";
 import { useEffect, useState } from 'react';
 import { fetchVideos, type R2Video } from "@/lib/fetchVideos";
+import { fetchPrisesDeVue } from "@/lib/fetchPrisesDeVue";
+import { VideoCarousel } from "./ProjetsComponents/VideoCarousel";
 
 export type VideoInfo ={
   src: string;
@@ -53,12 +55,17 @@ const VIDEO_META = [
 ];
 
 export default function Projets() {
-  const [videos, setVideos] = useState<R2Video[]>([])
+  const [videos, setVideos] = useState<R2Video[]>([]);
+  const [prisesDeVue, setPrisesDeVue] = useState<R2Video[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchVideos()
       .then(setVideos)
+      .catch((err: Error) => setError(err.message));
+
+    fetchPrisesDeVue()
+      .then(setPrisesDeVue)
       .catch((err: Error) => setError(err.message));
   }, []);
 
@@ -84,6 +91,9 @@ export default function Projets() {
               </Cell>
             ))}
           </BentoGrid>
+        </DomainBlock>
+        <DomainBlock tag="Projets — 03" label="Prises de vue" allprojects="Voir toutes les prises de vue">
+          <VideoCarousel videos={prisesDeVue} />
         </DomainBlock>
       </div>
     </section>
