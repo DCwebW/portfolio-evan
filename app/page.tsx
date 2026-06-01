@@ -13,6 +13,7 @@ import { useGSAP } from "@gsap/react";
 import Introduction from "./components/Introduction";
 import DemonstrationProcessus from "./components/Demonstration/DemonstrationProcessus";
 import ListeDemonstration from "./components/Demonstration/ListeDemonstration";
+import CallToAction from "./components/CallToAction";
 
 
 export default function Home() {
@@ -66,6 +67,9 @@ export default function Home() {
       <Experiences />
       <Citation/>
       <ListeDemonstration/>
+
+      {/* CALL TO ACTION */}
+      <CallToAction />
 
       {/* FOOTER */}
       <footer
