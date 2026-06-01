@@ -29,10 +29,8 @@ function useIsMobile() {
 export function ZoomParallax({ images }: ZoomParallaxProps) {
   const isMobile = useIsMobile();
   const container = useRef(null);
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
   const { scrollYProgress } = useScroll({
-    target: mounted ? container : undefined,
+    target: container,
     offset: ['start start', 'end end'],
   });
 

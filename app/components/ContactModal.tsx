@@ -4,6 +4,7 @@ import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import DownloadCVButton from './DownloadCVButton'
 
 interface ContactModalProps {
   isOpen: boolean
@@ -167,6 +168,10 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     </span>
                   </button>
                 </form>
+
+                <div className="mt-3">
+                  <DownloadCVButton />
+                </div>
               </div>
             </div>
           </motion.div>

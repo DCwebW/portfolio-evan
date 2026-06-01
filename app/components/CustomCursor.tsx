@@ -39,7 +39,7 @@ export default function CustomCursor() {
             borderRadius: "50%",
             background: "#910000",
             pointerEvents: "none",   // ← important, sinon il bloque les clics
-            zIndex: 9999,
+            zIndex: 99999,
             transform: "translate(-50%, -50%)"
         }} />
     )
