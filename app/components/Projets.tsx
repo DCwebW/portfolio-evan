@@ -5,78 +5,68 @@ import { Cell } from "./ProjetsComponents/Cell";
 import { DomainBlock } from "./ProjetsComponents/DomainBlock";
 import { useEffect, useState } from 'react';
 import { ListBlobResultBlob } from '@vercel/blob';
-import { fetchImages } from '@/lib/fetchImages';
 import { fetchVideos } from "@/lib/fetchVideos";
 
 export type VideoInfo ={
   src: string;
   title : string;
-  description: string; 
-  
+  description: string;
 }
 
+const graphismeUrls: string[] = [
+  '/Graphisme/FallyIpupaProjet.jpeg',
+  '/Graphisme/FeliciaProjet.jpeg',
+  '/Graphisme/FeliciaProjet2.png',
+  '/Graphisme/FreddyConduiteProjet.jpeg',
+  '/Graphisme/FreddyConduiteProjet2.jpeg',
+  '/Graphisme/LaFouineProjet.jpeg',
+  '/Graphisme/LilDurkProjet.jpeg',
+  '/Graphisme/MbappéProjet.jpeg',
+  '/Graphisme/PierreFeretProjet.jpeg',
+  '/Graphisme/PierreFeretProjet2.jpeg',
+  '/Graphisme/PierreFeretProjet3.jpeg',
+  '/Graphisme/PierreFeretProjet4.jpeg',
+  '/Graphisme/S-PriNoirProjet.jpeg',
+  '/Graphisme/TiakolaProjet.jpeg',
+];
 
 const VIDEO_META = [
   {
     title:"Chanson Felicia",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
-  
   },
   {
     title:"Session Studio",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
-  
-  },  {
+  },
+  {
     title:"Session Studio 2",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
-  
   },
   {
     title:"Entrainement Foot",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
-  
   },
   {
     title:"Training Arouna",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
-  
   },
-
-
-]
-
-
+];
 
 export default function Projets() {
-  const [images, setImages] = useState<ListBlobResultBlob[]>([]);
   const [videos, setVideos] = useState<ListBlobResultBlob[]>([])
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchImages()
-      .then(setImages)
-      .catch((err: Error) => setError(err.message));
-
     fetchVideos()
-    .then(setVideos)
-    .catch((err: Error) => setError(err.message));
+      .then(setVideos)
+      .catch((err: Error) => setError(err.message));
   }, []);
 
-  const graphismeUrls: string[] = images.map((img: ListBlobResultBlob) => img.url);
-
-  // const graphismewithInfo : ImageInfo[]= images.map((image,i)=>({
-  //   src:image.url,
-    
-  // }))
-
-  // const videosUrls: string[] = videos.map((video: ListBlobResultBlob)=> video.url)
-
-  const videosWithInfo : VideoInfo[]= videos.map((video,i)=>({
-    src:video.url,
-    ...(VIDEO_META[i] ?? {title: `Vidéo ${i + 1}`, description:""})
-  }))
-
-  console.log("videosWithInfo:", videosWithInfo);
+  const videosWithInfo: VideoInfo[] = videos.map((video, i) => ({
+    src: video.url,
+    ...(VIDEO_META[i] ?? { title: `Vidéo ${i + 1}`, description: "" })
+  }));
   return (
     <section
       id="projets"
