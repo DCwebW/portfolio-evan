@@ -1,25 +1,12 @@
-import { ListBlobResultBlob } from '@vercel/blob';
+export type R2Video = { url: string; key: string };
 
-export async function fetchVideos(): Promise<ListBlobResultBlob[]> {
+export async function fetchVideos(): Promise<R2Video[]> {
   const response = await fetch('/api/get-videos');
 
   if (!response.ok) {
-    throw new Error(`Erreur lors de la récupération des images : ${response.status}`);
+    throw new Error(`Erreur lors de la récupération des vidéos : ${response.status}`);
   }
 
-  const data: { blobs: ListBlobResultBlob[] } = await response.json();
-  
-  console.log('Nombre d\'images récupérées :', data.blobs.length);
-  console.log('Détail des images :');
-  data.blobs.forEach((blob: ListBlobResultBlob, index: number) => {
-    console.log(`Image ${index + 1} :`, {
-      url: blob.url,
-      pathname: blob.pathname,
-      size: blob.size,
-      uploadedAt: blob.uploadedAt,
-      contentType: blob.etag,
-    });
-  });
-
-  return data.blobs;
+  const data: { videos: R2Video[] } = await response.json();
+  return data.videos;
 }

@@ -10,6 +10,8 @@
     "deploy": "next build && gh-pages -d out"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1057.0",
+    "@aws-sdk/s3-request-presigner": "^3.1057.0",
     "@gsap/react": "^2.1.2",
     "@studio-freight/lenis": "^1.0.42",
     "@vercel/blob": "^2.4.0",

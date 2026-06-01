@@ -4,8 +4,7 @@ import { BentoGrid } from "./ProjetsComponents/BentoGrid";
 import { Cell } from "./ProjetsComponents/Cell";
 import { DomainBlock } from "./ProjetsComponents/DomainBlock";
 import { useEffect, useState } from 'react';
-import { ListBlobResultBlob } from '@vercel/blob';
-import { fetchVideos } from "@/lib/fetchVideos";
+import { fetchVideos, type R2Video } from "@/lib/fetchVideos";
 
 export type VideoInfo ={
   src: string;
@@ -54,7 +53,7 @@ const VIDEO_META = [
 ];
 
 export default function Projets() {
-  const [videos, setVideos] = useState<ListBlobResultBlob[]>([])
+  const [videos, setVideos] = useState<R2Video[]>([])
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -65,7 +64,7 @@ export default function Projets() {
 
   const videosWithInfo: VideoInfo[] = videos.map((video, i) => ({
     src: video.url,
-    ...(VIDEO_META[i] ?? { title: `Vidéo ${i + 1}`, description: "" })
+    ...(VIDEO_META[i] ?? { title: video.key, description: "" })
   }));
   return (
     <section
