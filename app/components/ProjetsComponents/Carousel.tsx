@@ -6,7 +6,6 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CarouselCell } from "./CarouselCell";
 
-gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export type ImageInfo={
   src:string, 
@@ -79,6 +78,7 @@ export function Carousel({ images }: { images: string[] }) {
   const row2 = imagesWithInfo.filter((_, i) => i % 2 === 1);
 
   useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger, useGSAP);
     const wrapper = wrapperRef.current;
     const r1 = row1Ref.current;
     const r2 = row2Ref.current;

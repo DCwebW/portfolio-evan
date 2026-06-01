@@ -1,10 +1,13 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { ImageInfo } from './Carousel';
 
 export function ImageModal({ info, onClose }: { info: ImageInfo | null; onClose: () => void }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
+
   useEffect(() => {
     if (!info) return;
     const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
@@ -12,6 +15,7 @@ export function ImageModal({ info, onClose }: { info: ImageInfo | null; onClose:
     return () => document.removeEventListener('keydown', handleKey);
   }, [info, onClose]);
 
+  if (!mounted) return null;
   return createPortal(
     <AnimatePresence>
       {info && (

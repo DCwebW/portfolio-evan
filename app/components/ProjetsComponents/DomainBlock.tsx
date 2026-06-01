@@ -6,7 +6,6 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitText from "gsap/src/SplitText";
 
-gsap.registerPlugin(ScrollTrigger, useGSAP, SplitText);
 
 export function DomainBlock({ tag, label, children,allprojects }: {
   tag: string;
@@ -20,6 +19,7 @@ export function DomainBlock({ tag, label, children,allprojects }: {
   const allProjectsRef= useRef<HTMLLinkElement>(null)
 
   useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger, useGSAP, SplitText);
     const el = blockRef.current;
     if (!el || !tagRef.current || !titleRef.current) return;
 

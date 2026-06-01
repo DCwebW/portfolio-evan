@@ -6,7 +6,6 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from './Navbar';
 
-gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false);
@@ -29,6 +28,7 @@ export default function HeroSection() {
   const quoteRef = useRef<HTMLParagraphElement>(null);
 
   useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger, useGSAP);
     if (isMobile) return;
 
     // Animations d'entrée

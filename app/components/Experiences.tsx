@@ -6,7 +6,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 
-gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const EXPERIENCES = [
   { initial: "U", name: "Union Internationale Architecte",logo:"/Logos/Union-Architectes-LogoNoir-NoBG.png",alt:"UIA-Image" },
@@ -25,6 +24,7 @@ export default function Experiences() {
   const decorationPhoto2=useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger, useGSAP);
     // --- Marquee continu ---
     gsap.to(marqueeTrackRef.current, {
       x: "-50%",

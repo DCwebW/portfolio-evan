@@ -1,10 +1,14 @@
-import React, { forwardRef } from 'react'
+'use client';
+import React, { forwardRef, useEffect, useState } from 'react'
 import type { ImageInfo } from './Carousel'
 import { createPortal } from 'react-dom'
 
 export const  ImageTooltip= forwardRef<HTMLDivElement,{info:ImageInfo}>(
   
 ({info},ref)=> {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
+  if (!mounted) return null;
   return createPortal(
     <div
     ref={ref}
