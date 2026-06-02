@@ -10,6 +10,7 @@ import Introduction from "./components/Introduction";
 import DemonstrationProcessus from "./components/Demonstration/DemonstrationProcessus";
 import ListeDemonstration from "./components/Demonstration/ListeDemonstration";
 import CallToAction from "./components/CallToAction";
+import Footer from "./components/Footer";
 
 
 export default function Home() {
@@ -68,31 +69,7 @@ export default function Home() {
       <CallToAction />
 
       {/* FOOTER */}
-      <footer
-        id="footer"
-        className="bg-[var(--dark)] pt-12 md:pt-[72px] px-5 md:px-8 lg:px-[52px] pb-9 md:pb-[52px] border-t border-[var(--border)] -mt-8 relative z-10"
-      >
-        <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-5 md:gap-6 flex-wrap">
-          <span className="font-display font-black text-lg tracking-[1px] text-[var(--red)]">
-            Evan Mukendi
-          </span>
-          <div className="flex flex-col md:flex-row gap-3 md:gap-8 items-start md:items-center">
-            <a
-              className="text-sm text-white/50 no-underline transition-colors duration-200 hover:text-white focus:outline-none focus-visible:text-white min-h-[44px] flex items-center"
-              href="mailto:evanmuks@gmail.com"
-            >
-              evanmuks@gmail.com
-            </a>
-            <a
-              className="text-sm text-white/50 no-underline transition-colors duration-200 hover:text-white focus:outline-none focus-visible:text-white min-h-[44px] flex items-center"
-              href="tel:0688019050"
-            >
-              06-88-01-90-50
-            </a>
-          </div>
-          <span className="text-xs text-white/25">© 2026 Evan Mukendi</span>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }
