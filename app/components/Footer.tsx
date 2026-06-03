@@ -1,7 +1,9 @@
 "use client"
 
+import { useState } from "react"
 import ContactButton from "./ContactButton"
 import DownloadCVButton from "./DownloadCVButton"
+import AboutModal from "./AboutModal"
 
 const TikTokIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-white/50">
@@ -17,7 +19,6 @@ const LinkedInIcon = () => (
 
 const sections = [
   { label: "Accueil", href: "#hero" },
-  { label: "À propos", href: "#about" },
   { label: "Projets", href: "#projects" },
   { label: "Expériences", href: "#experiences" },
   { label: "Démonstration", href: "#demonstration" },
@@ -38,6 +39,8 @@ const socials = [
 ]
 
 export default function Footer() {
+  const [aboutOpen, setAboutOpen] = useState(false)
+
   return (
     <footer id="footer" className="relative border-white/5 border-t pt-14 pb-8 bg-[var(--dark)] overflow-hidden">
       {/* Glow rouge en haut — z-0 pour rester dans le footer, au-dessus du bg */}
@@ -120,8 +123,18 @@ export default function Footer() {
             <a href="tel:0688019050" className="text-white/60 hover:text-white transition-colors font-sans">
               06-88-01-90-50
             </a>
+            <span className="hidden sm:inline-block w-px h-4 bg-white/10" />
+            <button
+              onClick={() => setAboutOpen(true)}
+              className="text-white/40 hover:text-white/70 transition-colors font-sans bg-transparent border-none cursor-pointer text-sm p-0"
+            >
+              À propos du site
+            </button>
           </div>
         </div>
+
+        <AboutModal isOpen={aboutOpen} onClose={() => setAboutOpen(false)} />
+
       </div>
 
       <span className="hidden md:block absolute right-6 bottom-6 h-4 w-16 rounded-full border border-white/10 bg-white/5" />

@@ -109,14 +109,6 @@ export default function Navbar() {
         <li>
           <a
             className="text-sm font-normal text-white/65 no-underline tracking-[0.3px] transition-colors duration-200 hover:text-white focus:outline-none focus-visible:text-white"
-            href="#about"
-          >
-            A propos
-          </a>
-        </li>
-        <li>
-          <a
-            className="text-sm font-normal text-white/65 no-underline tracking-[0.3px] transition-colors duration-200 hover:text-white focus:outline-none focus-visible:text-white"
             href="#projects"
           >
             Projets
@@ -177,15 +169,6 @@ export default function Navbar() {
               onClick={close}
             >
               Home
-            </a>
-          </li>
-          <li>
-            <a
-              className="text-base font-normal text-white/65 no-underline tracking-[0.3px] transition-colors duration-200 hover:text-white focus:outline-none focus-visible:text-white"
-              href="#about"
-              onClick={close}
-            >
-              About
             </a>
           </li>
           <li>

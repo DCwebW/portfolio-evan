@@ -31,12 +31,12 @@ const images = [
   {
     src: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=1280&h=720&fit=crop&crop=entropy&auto=format&q=80',
     alt: 'Vagues et plage',
-    label: 'xxxxxx',
+    label: 'Communication',
   },
   {
     src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1280&h=720&fit=crop&crop=entropy&auto=format&q=80',
     alt: 'Forêt et lumière',
-    label: 'xxxxxx',
+    label: 'Vidéo et Graphisme',
   },
 ];
 
