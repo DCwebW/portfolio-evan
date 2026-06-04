@@ -7,7 +7,7 @@ export const demonstrationData: Demonstration[] = [
     nombre: 1,
     titre: "Analyse",
     explication:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
+      "Analyser le projet, le marché , voir les forces et faiblesses",
     image: "/AnalyseProcessus.png", 
     alt:"Illustration de l'étape d'analyse",
   },
@@ -15,7 +15,7 @@ export const demonstrationData: Demonstration[] = [
     nombre: 2,
     titre: "Diagnostic",
     explication:
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+      "Etat des lieux , et constat de la position du projet dans son secteur ou environnement ",
     image: "/DiagnosticProcessus.png", 
     alt:"Illustration de l'étape de diagnostic"
   },
@@ -23,7 +23,7 @@ export const demonstrationData: Demonstration[] = [
     nombre: 3,
     titre: "Plan Stratégique",
     explication:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "Etablissement d'une stratégie afin de définir les objectifs, et les actions à mettre en place",
     image: "/StratégieProcessus.png", 
     alt:"Illustration de l'étape du plan stratégique",
   },
@@ -31,7 +31,7 @@ export const demonstrationData: Demonstration[] = [
     nombre: 4,
     titre: "Pratique",
     explication:
-      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.",
+      "Action sur le terrain en fonction de la stratégie mise en place",
     image: "/PratiqueProcessus.png",
     alt: "Illustration de l'étape de mise en pratique",
   },
@@ -39,7 +39,7 @@ export const demonstrationData: Demonstration[] = [
     nombre: 5,
     titre: "Bilan",
     explication:
-      "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.",
+      "Bilan pour voir les résultats à différentes periodes que ca soit sur du court-terme ou du long-terme",
     image: "/BilanProcessus.png",
     alt: "Illustration de l'étape de bilan",
   },
