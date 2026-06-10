@@ -33,24 +33,24 @@ const graphismeUrls: string[] = [
 
 const VIDEO_META = [
   {
-    title:"Chanson Felicia",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
+    title:" Felicia (interprétation d’un extrait inédit)",
+    description: "Cette vidéo a été réalisée pour l’artiste Felicia à l’occasion de l’interprétation d’un extrait de son prochain single.L’objectif était de créer une ambiance immersive et artistique mettant en valeur son univers musical, son expression scénique et l’émotion transmise à travers sa performance.",
   },
   {
-    title:"Session Studio",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
+    title:"Mitcho - Session Studio",
+    description: "Cette vidéo a été tournée pendant une séance studio de la chanteuse Michou afin de montrer les coulisses de l’enregistrement et son immersion dans le processus créatif.À travers des images spontanées et une ambiance intimiste, cette réalisation met en lumière le travail artistique, l’énergie du studio et l’authenticité du moment."
   },
   {
-    title:"Session Studio 2",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
+    title:"Félicia - Session Studio",
+    description: "Cette vidéo plonge au cœur d’une séance studio de l’artiste Felicia pendant l’enregistrement de ses morceaux.L’objectif était de montrer les coulisses de la création musicale en mettant en avant l’ambiance du studio, le travail artistique et l’authenticité du processus d’enregistrement.",
   },
   {
-    title:"Entrainement Foot",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
+    title:" Amewoui (préparation physique)",
+    description: "Cette vidéo met en avant la préparation physique du joueur de football Amewoui à travers une réalisation dynamique centrée sur l’effort, la discipline et la performance sportive.L’objectif était de retranscrire l’intensité de ses entraînements tout en valorisant son engagement et son rythme de préparation.",
   },
   {
     title:"Training Arouna",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.",
+    description: "Cette vidéo a été réalisée lors d’un entraînement du joueur Harouna du Nemours Basketball Club.L’objectif était de capturer l’intensité des exercices, la concentration du joueur et l’énergie propre à la pratique du basketball.",
   },
 ];
 

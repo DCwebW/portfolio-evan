@@ -79,7 +79,7 @@ export default function HeroSection() {
     <section
       id="hero"
       ref={heroRef}
-      className="relative w-full h-screen min-h-[680px] flex flex-col overflow-hidden rounded-b-[48px] "
+      className="relative w-full h-[85vh] md:h-screen min-h-[520px] md:min-h-[680px] flex flex-col overflow-hidden rounded-b-[48px] "
     >
       <Navbar />
 

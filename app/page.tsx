@@ -11,6 +11,7 @@ import DemonstrationProcessus from "./components/Demonstration/DemonstrationProc
 import ListeDemonstration from "./components/Demonstration/ListeDemonstration";
 import CallToAction from "./components/CallToAction";
 import Footer from "./components/Footer";
+import OutilsMaitrises from "./components/OutilsMaitrises";
 
 
 export default function Home() {
@@ -67,6 +68,9 @@ export default function Home() {
 
       {/* CALL TO ACTION */}
       <CallToAction />
+
+      {/* OUTILS MAÎTRISÉS */}
+      <OutilsMaitrises />
 
       {/* FOOTER */}
       <Footer />

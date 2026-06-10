@@ -21,7 +21,6 @@ const sections = [
   { label: "Accueil", href: "#hero" },
   { label: "Projets", href: "#projects" },
   { label: "Expériences", href: "#experiences" },
-  { label: "Démonstration", href: "#demonstration" },
   { label: "Contact", href: "#footer" },
 ]
 
