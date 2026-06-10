@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
-const nextConfig = {
-  images:{unoptimized:true}
+const nextConfig: NextConfig = {
+  output: "export",
+  basePath: "/portfolio-evan",
+  images: { unoptimized: true },
 };
 
 export default nextConfig;
