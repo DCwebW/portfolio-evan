@@ -41,7 +41,7 @@ yarn-error.log*
 next-env.d.ts
 
 # Dossier Graphisme et Video
-
+/api/get-images
 /public/Video
 
 # Dossier Prises de Vue
