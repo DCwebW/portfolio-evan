@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Pause, Volume2, VolumeX, Maximize, X, Minimize } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, Maximize, X, Minimize, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { VideoInfo } from '../Projets';
 
 function formatTime(s: number): string {
@@ -12,7 +12,14 @@ function formatTime(s: number): string {
   return `${m}:${sec.toString().padStart(2, '0')}`;
 }
 
-export function VideoModal({ info, onClose }: { info: VideoInfo | null; onClose: () => void }) {
+interface VideoModalProps {
+  items: VideoInfo[];
+  currentIndex: number | null;
+  onClose: () => void;
+  onNavigate: (index: number) => void;
+}
+
+export function VideoModal({ items, currentIndex, onClose, onNavigate }: VideoModalProps) {
   const [mounted, setMounted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -26,21 +33,25 @@ export function VideoModal({ info, onClose }: { info: VideoInfo | null; onClose:
 
   useEffect(() => { setMounted(true); }, []);
 
+  const info = currentIndex !== null ? items[currentIndex] : null;
+  const isOpen = info !== null && currentIndex !== null;
+
+  // Reset vidéo à chaque changement d'index (navigation) ou fermeture
   useEffect(() => {
-    if (!info) {
-      const video = videoRef.current;
-      if (video) { video.pause(); video.currentTime = 0; }
-      setIsPlaying(false);
-      setCurrentTime(0);
-      setDuration(0);
-      setShowOverlay(true);
-    }
-  }, [info]);
+    const video = videoRef.current;
+    if (video) { video.pause(); video.currentTime = 0; }
+    setIsPlaying(false);
+    setCurrentTime(0);
+    setDuration(0);
+    setShowOverlay(true);
+  }, [currentIndex]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (!info) return;
+      if (!isOpen) return;
       if (e.key === 'Escape') { onClose(); return; }
+      if (e.key === 'ArrowLeft' && items.length > 1) { onNavigate((currentIndex! - 1 + items.length) % items.length); return; }
+      if (e.key === 'ArrowRight' && items.length > 1) { onNavigate((currentIndex! + 1) % items.length); return; }
       if (e.key === ' ' && e.target === document.body) {
         e.preventDefault();
         const v = videoRef.current;
@@ -49,7 +60,7 @@ export function VideoModal({ info, onClose }: { info: VideoInfo | null; onClose:
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
-  }, [info, onClose]);
+  }, [isOpen, currentIndex, items.length, onClose, onNavigate]);
 
   useEffect(() => {
     const onFsChange = () => setIsFullscreen(!!document.fullscreenElement);
@@ -58,7 +69,7 @@ export function VideoModal({ info, onClose }: { info: VideoInfo | null; onClose:
   }, []);
 
   useEffect(() => {
-    if (info) {
+    if (isOpen) {
       window.dispatchEvent(new Event('lenis:stop'));
       document.body.style.overflow = 'hidden';
     } else {
@@ -69,7 +80,7 @@ export function VideoModal({ info, onClose }: { info: VideoInfo | null; onClose:
       window.dispatchEvent(new Event('lenis:start'));
       document.body.style.overflow = '';
     };
-  }, [info]);
+  }, [isOpen]);
 
   const togglePlay = useCallback(() => {
     const v = videoRef.current;
@@ -111,10 +122,11 @@ export function VideoModal({ info, onClose }: { info: VideoInfo | null; onClose:
   if (!mounted) return null;
 
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
+  const canNavigate = items.length > 1;
 
   return createPortal(
     <AnimatePresence>
-      {info && (
+      {isOpen && info && (
         <motion.div
           className="fixed inset-0 z-[200] flex items-center justify-center p-4"
           initial={{ opacity: 0 }}
@@ -125,8 +137,31 @@ export function VideoModal({ info, onClose }: { info: VideoInfo | null; onClose:
         >
           <div className="absolute inset-0 bg-black/85 backdrop-blur-md" />
 
-          {/* Conteneur principal : hauteur fixe pour que les contrôles restent toujours visibles */}
+          {/* Flèche gauche */}
+          {canNavigate && (
+            <button
+              className="absolute left-3 md:left-6 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-black/40 border border-white/15 text-white/70 hover:text-white hover:bg-black/70 hover:border-white/30 transition-all"
+              onClick={(e) => { e.stopPropagation(); onNavigate((currentIndex! - 1 + items.length) % items.length); }}
+              aria-label="Vidéo précédente"
+            >
+              <ChevronLeft size={20} />
+            </button>
+          )}
+
+          {/* Flèche droite */}
+          {canNavigate && (
+            <button
+              className="absolute right-3 md:right-6 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-black/40 border border-white/15 text-white/70 hover:text-white hover:bg-black/70 hover:border-white/30 transition-all"
+              onClick={(e) => { e.stopPropagation(); onNavigate((currentIndex! + 1) % items.length); }}
+              aria-label="Vidéo suivante"
+            >
+              <ChevronRight size={20} />
+            </button>
+          )}
+
+          {/* Conteneur principal */}
           <motion.div
+            key={currentIndex}
             ref={containerRef}
             className="relative z-10 bg-[#0d0d0d] border border-white/10 rounded-2xl w-full max-w-[700px] flex flex-col"
             style={{ height: '85vh', maxHeight: 600 }}
@@ -136,7 +171,7 @@ export function VideoModal({ info, onClose }: { info: VideoInfo | null; onClose:
             transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header — hauteur fixe */}
+            {/* Header */}
             <div className="flex items-center justify-between px-5 py-4 border-b border-white/8 shrink-0">
               <div className="flex items-center gap-3 min-w-0">
                 <div className="w-5 h-[2px] shrink-0" style={{ background: 'var(--red, #c00)' }} />
@@ -146,6 +181,11 @@ export function VideoModal({ info, onClose }: { info: VideoInfo | null; onClose:
                 >
                   {info.title}
                 </h3>
+                {canNavigate && (
+                  <span className="text-white/30 text-xs tabular-nums shrink-0 ml-1">
+                    {currentIndex! + 1}/{items.length}
+                  </span>
+                )}
               </div>
               <button
                 onClick={onClose}
@@ -156,12 +196,13 @@ export function VideoModal({ info, onClose }: { info: VideoInfo | null; onClose:
               </button>
             </div>
 
-            {/* Zone vidéo — flex-1 + min-h-0 : prend l'espace restant, jamais plus */}
+            {/* Zone vidéo */}
             <div
               className="relative bg-black flex-1 min-h-0 cursor-pointer select-none overflow-hidden"
               onClick={togglePlay}
             >
               <video
+                key={info.src}
                 ref={videoRef}
                 src={info.src}
                 className="w-full h-full object-contain block"
@@ -192,7 +233,7 @@ export function VideoModal({ info, onClose }: { info: VideoInfo | null; onClose:
               </AnimatePresence>
             </div>
 
-            {/* Contrôles — hauteur fixe, toujours visibles */}
+            {/* Contrôles */}
             <div className="px-5 pt-4 pb-4 bg-[#111] flex flex-col gap-3 shrink-0 border-t border-white/8">
               {/* Barre de progression */}
               <div className="flex items-center gap-3">
@@ -263,7 +304,7 @@ export function VideoModal({ info, onClose }: { info: VideoInfo | null; onClose:
               </div>
             </div>
 
-            {/* Description — tout en bas, hauteur fixe */}
+            {/* Description */}
             {info.description && (
               <div className="px-5 py-4 bg-[#0d0d0d] border-t border-white/8 shrink-0">
                 <p className="text-white/45 text-sm leading-relaxed line-clamp-3">{info.description}</p>

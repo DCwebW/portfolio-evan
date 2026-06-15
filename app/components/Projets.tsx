@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { fetchVideos, type R2Video } from "@/lib/fetchVideos";
 import { fetchPrisesDeVue } from "@/lib/fetchPrisesDeVue";
 import { VideoCarousel } from "./ProjetsComponents/VideoCarousel";
+import { VideoModal } from "./ProjetsComponents/VideoModal";
 
 export type VideoInfo ={
   src: string;
@@ -60,6 +61,7 @@ export default function Projets() {
   const [videos, setVideos] = useState<R2Video[]>([]);
   const [prisesDeVue, setPrisesDeVue] = useState<R2Video[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [selectedVideoIndex, setSelectedVideoIndex] = useState<number | null>(null);
 
   useEffect(() => {
     fetchVideos()
@@ -88,11 +90,17 @@ export default function Projets() {
         <DomainBlock tag="Projets — 02" label="Vidéo" >
           <BentoGrid>
             {videosWithInfo.map((video, i) => (
-              <Cell key={video.src} featured={i === 0} info={video}>
+              <Cell key={video.src} featured={i === 0} info={video} onOpen={() => setSelectedVideoIndex(i)}>
                 <video src={video.src} className="w-full h-full object-cover" autoPlay muted loop playsInline />
               </Cell>
             ))}
           </BentoGrid>
+          <VideoModal
+            items={videosWithInfo}
+            currentIndex={selectedVideoIndex}
+            onClose={() => setSelectedVideoIndex(null)}
+            onNavigate={setSelectedVideoIndex}
+          />
         </DomainBlock>
         <DomainBlock tag="Projets — 03" label="Prises de vue" >
           <VideoCarousel videos={prisesDeVue} />

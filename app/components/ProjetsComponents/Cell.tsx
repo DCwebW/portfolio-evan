@@ -1,19 +1,18 @@
 'use client';
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { VideoTooltip } from "./VideoTooltip";
-import { VideoModal } from "./VideoModal";
 import type { VideoInfo } from "../Projets";
 
-export function Cell({ featured, children, info }: {
+export function Cell({ featured, children, info, onOpen }: {
   featured?: boolean;
   children: React.ReactNode;
   info?: VideoInfo;
+  onOpen?: () => void;
 }) {
   const cellRef = useRef<HTMLDivElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
-  const [modalInfo, setModalInfo] = useState<VideoInfo | null>(null);
 
   useGSAP(() => {
     gsap.set(cellRef.current, { scale: 1, zIndex: 1 });
@@ -30,26 +29,22 @@ export function Cell({ featured, children, info }: {
   };
 
   return (
-    <>
-      <div
-        ref={cellRef}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onClick={() => info && setModalInfo(info)}
-        className={`
-          js-cell relative rounded-xl bg-white/5 cursor-pointer
-          ${featured
-            ? "sm:col-span-2 lg:col-span-1 lg:row-span-2 aspect-[9/16] sm:aspect-[16/7] lg:aspect-auto lg:h-full"
-            : "aspect-video lg:aspect-auto lg:h-full"
-          }
-        `}
-        style={{ overflow: "hidden" }}
-      >
-        {children}
-        {info && <VideoTooltip ref={tooltipRef} info={info} />}
-      </div>
-
-      <VideoModal info={modalInfo} onClose={() => setModalInfo(null)} />
-    </>
+    <div
+      ref={cellRef}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={() => info && onOpen?.()}
+      className={`
+        js-cell relative rounded-xl bg-white/5 cursor-pointer
+        ${featured
+          ? "sm:col-span-2 lg:col-span-1 lg:row-span-2 aspect-[9/16] sm:aspect-[16/7] lg:aspect-auto lg:h-full"
+          : "aspect-video lg:aspect-auto lg:h-full"
+        }
+      `}
+      style={{ overflow: "hidden" }}
+    >
+      {children}
+      {info && <VideoTooltip ref={tooltipRef} info={info} />}
+    </div>
   );
 }

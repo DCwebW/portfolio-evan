@@ -1,10 +1,11 @@
 'use client';
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CarouselCell } from "./CarouselCell";
+import { ImageModal } from "./ImageModal";
 
 
 export type ImageInfo={
@@ -74,14 +75,12 @@ export function Carousel({ images }: { images: string[] }) {
   const row1Ref = useRef<HTMLDivElement>(null);
   const row2Ref = useRef<HTMLDivElement>(null);
   const tweensRef = useRef<gsap.core.Tween[]>([]);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const imagesWithInfo: ImageInfo[] = images.map((src,i)=>({
     src,
     ...(IMAGE_META[i] ?? {title:`Image ${i+1}`, description:""})
   }))
-
-  const row1 = imagesWithInfo.filter((_, i) => i % 2 === 0);
-  const row2 = imagesWithInfo.filter((_, i) => i % 2 === 1);
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -109,14 +108,34 @@ export function Carousel({ images }: { images: string[] }) {
     wrapper.onmouseleave = () => tweensRef.current.forEach(t => t.play());
   }, { scope: wrapperRef });
 
+  const row1WithIdx = imagesWithInfo
+    .map((item, i) => ({ item, originalIndex: i }))
+    .filter(({ originalIndex }) => originalIndex % 2 === 0);
+  const row2WithIdx = imagesWithInfo
+    .map((item, i) => ({ item, originalIndex: i }))
+    .filter(({ originalIndex }) => originalIndex % 2 === 1);
+
   return (
-    <div ref={wrapperRef} className="flex flex-col gap-2 py-6" style={{ overflowX: "clip" }}>
-      <div ref={row1Ref} className="flex gap-2" style={{ width: "max-content" }}>
-        {[...row1, ...row1].map((item, i) => <CarouselCell key={i} src={item.src} info={item} />)}
+    <>
+      <div ref={wrapperRef} className="flex flex-col gap-2 py-6" style={{ overflowX: "clip" }}>
+        <div ref={row1Ref} className="flex gap-2" style={{ width: "max-content" }}>
+          {[...row1WithIdx, ...row1WithIdx].map(({ item, originalIndex }, i) => (
+            <CarouselCell key={i} src={item.src} info={item} onOpen={() => setSelectedIndex(originalIndex)} />
+          ))}
+        </div>
+        <div ref={row2Ref} className="flex gap-2" style={{ width: "max-content" }}>
+          {[...row2WithIdx, ...row2WithIdx].map(({ item, originalIndex }, i) => (
+            <CarouselCell key={i} src={item.src} info={item} onOpen={() => setSelectedIndex(originalIndex)} />
+          ))}
+        </div>
       </div>
-      <div ref={row2Ref} className="flex gap-2" style={{ width: "max-content" }}>
-        {[...row2, ...row2].map((item, i) => <CarouselCell key={i} src={item.src} info={item}/>)}
-      </div>
-    </div>
+
+      <ImageModal
+        items={imagesWithInfo}
+        currentIndex={selectedIndex}
+        onClose={() => setSelectedIndex(null)}
+        onNavigate={setSelectedIndex}
+      />
+    </>
   );
 }

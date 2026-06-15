@@ -34,7 +34,7 @@ function CallToAction() {
             style={{
               backgroundImage: 'url(/EvanContactPhoto.png)',
               backgroundSize: 'cover',
-              backgroundPosition: 'center',
+              backgroundPosition: '50% 30%',
               backgroundRepeat: 'no-repeat',
             }}
           >
