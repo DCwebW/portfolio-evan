@@ -32,7 +32,7 @@ function CallToAction() {
           <div
             className="rounded-[20px] relative overflow-hidden min-h-50 sm:h-70 md:h-125 w-full sm:w-50 md:w-70 sm:shrink-0"
             style={{
-              backgroundImage: 'url(/ImageDaryl.jpg)',
+              backgroundImage: 'url(/EvanContactPhoto.png)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',

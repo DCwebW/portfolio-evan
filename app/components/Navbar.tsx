@@ -75,7 +75,7 @@ export default function Navbar() {
 
         {/* TikTok */}
         <a
-          href="https://www.tiktok.com/@votreprofil"
+          href="https://www.tiktok.com/@evanmuks3?_r=1&_t=ZN-97EU8MYqtte"
           target="_blank"
           rel="noopener noreferrer"
           className="text-[var(--red)] hover:opacity-60 transition-opacity duration-200"
@@ -86,7 +86,7 @@ export default function Navbar() {
 
       
         <a
-          href="https://www.linkedin.com/in/votreprofil"
+          href="https://www.linkedin.com/in/evan-mukendi-180263180/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-[var(--red)] hover:opacity-60 transition-opacity duration-200"

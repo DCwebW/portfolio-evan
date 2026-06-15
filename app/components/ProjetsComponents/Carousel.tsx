@@ -28,10 +28,10 @@ description: "Réalisation d’un visuel promotionnel autour de l’univers de F
     description:"Création d’un support visuel destiné à accompagner la communication artistique et médiatique de Félicia."
   },
   {title:"Freddy Conduite",
-    description:""
+    description:"Cette affiche promotionnelle a été réalisée dans le cadre d’une campagne de communication pour l’auto-école Freddy Conduite.L’objectif était de mettre en avant une offre exceptionnelle de 10 % de réduction sur le permis B durant la période des soldes, tout en attirant rapidement l’attention grâce à une identité visuelle dynamique et impactante."
   },
   {title:"Freddy Conduite",
-    description:""
+    description:"Cette affiche promotionnelle a été réalisée pour mettre en avant l’offre « TeamCOUP » proposée par l’auto-école Freddy Conduite.Le concept repose sur une inscription en groupe permettant aux candidats de bénéficier de tarifs avantageux sur le permis B et le permis A2 en formant une équipe de trois personnes minimum."
   },
   {title:"La Fouine - Héritage & retour à Bercy ",
     description:"Création d’un visuel retraçant le parcours musical de La Fouine à travers les différentes époques de sa carrière et les projets qui ont marqué le rap français. "
@@ -41,8 +41,10 @@ description: "Réalisation d’un visuel promotionnel autour de l’univers de F
   },
   {title:"Mbappé - Signature au Real Madrid",
     description:"Cette affiche a été réalisée à l’occasion de la signature de Kylian Mbappé au Real Madrid."
+  },{title:"Pierre Feret - Affiche",
+    description:""
   },
-  {title:"Pierre Feret - Joaillerie",
+  {title:"Pierre Feret - Affiche 2",
     description:""
   },
   {title:"Pierre Feret - Joaillerie",
@@ -54,6 +56,10 @@ description: "Réalisation d’un visuel promotionnel autour de l’univers de F
   {title:"Pierre Feret - Joaillerie",
     description:""
   },
+  {title:"Pierre Feret - Joaillerie",
+    description:""
+  },
+  
   {title:"S-Pri Noir - La clé du chateau",
     description:"Cette création a été conçue pour accompagner le single La clé du château. Le concept visuel s’articule autour de la symbolique de la clé, utilisée ici comme élément central afin de renforcer l’identité et le sens du titre."
   },

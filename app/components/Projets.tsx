@@ -23,6 +23,8 @@ const graphismeUrls: string[] = [
   '/Graphisme/LaFouineProjet.jpeg',
   '/Graphisme/LilDurkProjet.jpeg',
   '/Graphisme/MbappéProjet.jpeg',
+  '/Graphisme/PierreFeretAffiche.png',
+  '/Graphisme/PierreFeretAffiche-2.png',
   '/Graphisme/PierreFeretProjet.jpeg',
   '/Graphisme/PierreFeretProjet2.jpeg',
   '/Graphisme/PierreFeretProjet3.jpeg',
@@ -79,11 +81,11 @@ export default function Projets() {
       className="bg-(--dark) pt-16 md:pt-20 lg:pt-[100px] pb-16 md:pb-20 lg:pb-[120px] relative z-0"
     >
       <div className="max-w-[1400px] mx-auto flex flex-col gap-12 md:gap-16 lg:gap-24 px-5 md:px-8 lg:px-[52px]">
-        <DomainBlock tag="Projets — 01" label="Graphisme" allprojects="Voir tous les projets graphisme">
+        <DomainBlock tag="Projets — 01" label="Graphisme" >
           {error && <p className="text-red-500">Erreur : {error}</p>}
           <Carousel images={graphismeUrls} />
         </DomainBlock>
-        <DomainBlock tag="Projets — 02" label="Vidéo" allprojects="Voir tous les projets vidéos">
+        <DomainBlock tag="Projets — 02" label="Vidéo" >
           <BentoGrid>
             {videosWithInfo.map((video, i) => (
               <Cell key={video.src} featured={i === 0} info={video}>
@@ -92,7 +94,7 @@ export default function Projets() {
             ))}
           </BentoGrid>
         </DomainBlock>
-        <DomainBlock tag="Projets — 03" label="Prises de vue" allprojects="Voir toutes les prises de vue">
+        <DomainBlock tag="Projets — 03" label="Prises de vue" >
           <VideoCarousel videos={prisesDeVue} />
         </DomainBlock>
       </div>
