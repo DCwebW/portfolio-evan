@@ -6,7 +6,7 @@ interface DownloadCVButtonProps {
 }
 
 export default function DownloadCVButton({
-  fileName = "CV-Evan.pdf",
+  fileName = "Evan Mukendi Cv-1.pdf",
   label = "Voir CV",
 }: DownloadCVButtonProps) {
   const handleDownload = () => {
