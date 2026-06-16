@@ -7,6 +7,7 @@ interface Image {
   src: string;
   alt?: string;
   label?: string;
+  objectPosition?: string;
 }
 
 interface ZoomParallaxProps {
@@ -81,7 +82,7 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
   return (
     <div ref={container} className="relative h-[400vh] bg-white">
       <div className="sticky top-0 h-screen overflow-hidden bg-white">
-        {images.map(({ src, alt, label }, index) => {
+        {images.map(({ src, alt, label, objectPosition }, index) => {
           const scale = scales[index % scales.length];
 
           return (
@@ -95,6 +96,7 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
                   src={src || '/placeholder.svg'}
                   alt={alt || `Parallax image ${index + 1}`}
                   className="h-full w-full object-cover"
+                  style={objectPosition ? { objectPosition } : undefined}
                 />
                 {label && (
                   <motion.div

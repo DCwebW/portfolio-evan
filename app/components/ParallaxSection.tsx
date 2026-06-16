@@ -5,8 +5,9 @@ import { ZoomParallax } from '@/components/ui/zoom-parallax';
 
 const images = [
   {
-    src: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1280&h=720&fit=crop&crop=entropy&auto=format&q=80',
+    src: '/AnimationParallax/ImagePortraitEvan.png',
     alt: 'Architecture moderne',
+    objectPosition: 'top',
   },
   {
     src: '/AnimationParallax/CreationdeContenu.png',

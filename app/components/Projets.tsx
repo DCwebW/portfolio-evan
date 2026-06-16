@@ -6,6 +6,7 @@ import { DomainBlock } from "./ProjetsComponents/DomainBlock";
 import { useEffect, useState } from 'react';
 import { fetchVideos, type R2Video } from "@/lib/fetchVideos";
 import { fetchPrisesDeVue } from "@/lib/fetchPrisesDeVue";
+import { GRAPHISME_IMAGES } from "@/lib/graphisme";
 import { VideoCarousel } from "./ProjetsComponents/VideoCarousel";
 import { VideoModal } from "./ProjetsComponents/VideoModal";
 
@@ -15,24 +16,6 @@ export type VideoInfo ={
   description: string;
 }
 
-const graphismeUrls: string[] = [
-  '/Graphisme/FallyIpupaProjet.jpeg',
-  '/Graphisme/FeliciaProjet.jpeg',
-  '/Graphisme/FeliciaProjet2.png',
-  '/Graphisme/FreddyConduiteProjet.jpeg',
-  '/Graphisme/FreddyConduiteProjet2.jpeg',
-  '/Graphisme/LaFouineProjet.jpeg',
-  '/Graphisme/LilDurkProjet.jpeg',
-  '/Graphisme/MbappéProjet.jpeg',
-  '/Graphisme/PierreFeretAffiche.png',
-  '/Graphisme/PierreFeretAffiche-2.png',
-  '/Graphisme/PierreFeretProjet.jpeg',
-  '/Graphisme/PierreFeretProjet2.jpeg',
-  '/Graphisme/PierreFeretProjet3.jpeg',
-  '/Graphisme/PierreFeretProjet4.jpeg',
-  '/Graphisme/S-PriNoirProjet.jpeg',
-  '/Graphisme/TiakolaProjet.jpeg',
-];
 
 const VIDEO_META = [
   {
@@ -85,7 +68,7 @@ export default function Projets() {
       <div className="max-w-[1400px] mx-auto flex flex-col gap-12 md:gap-16 lg:gap-24 px-5 md:px-8 lg:px-[52px]">
         <DomainBlock tag="Projets — 01" label="Graphisme" >
           {error && <p className="text-red-500">Erreur : {error}</p>}
-          <Carousel images={graphismeUrls} />
+          <Carousel images={GRAPHISME_IMAGES} />
         </DomainBlock>
         <DomainBlock tag="Projets — 02" label="Vidéo" >
           <BentoGrid>
