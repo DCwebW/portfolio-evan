@@ -1,16 +1,23 @@
 "use client"
-import { useRef } from "react"
+import { useRef, useState, useEffect } from "react"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 
-// Cacher le curseur natif
-// Dans ton CSS global :
-// * { cursor: none; }
-
 export default function CustomCursor() {
     const cursorRef = useRef(null)
+    const [isPointerFine, setIsPointerFine] = useState(false)
+
+    useEffect(() => {
+        const mq = window.matchMedia("(pointer: fine)")
+        setIsPointerFine(mq.matches)
+        const handler = (e: MediaQueryListEvent) => setIsPointerFine(e.matches)
+        mq.addEventListener("change", handler)
+        return () => mq.removeEventListener("change", handler)
+    }, [])
 
     useGSAP(() => {
+        if (!isPointerFine) return
+
         globalThis.addEventListener("mousemove", (e) => {
             gsap.to(cursorRef.current, {
                 x: e.clientX,
@@ -20,7 +27,6 @@ export default function CustomCursor() {
             })
         })
 
-        // Grossir au hover d'un lien
         document.querySelectorAll("a, button").forEach((el) => {
             el.addEventListener("mouseenter", () =>
                 gsap.to(cursorRef.current, { scale: 2.5, duration: 0.3 })
@@ -29,7 +35,9 @@ export default function CustomCursor() {
                 gsap.to(cursorRef.current, { scale: 1, duration: 0.3 })
             )
         })
-    })
+    }, [isPointerFine])
+
+    if (!isPointerFine) return null
 
     return (
         <div ref={cursorRef} style={{
@@ -38,7 +46,7 @@ export default function CustomCursor() {
             height: 20,
             borderRadius: "50%",
             background: "#910000",
-            pointerEvents: "none",   // ← important, sinon il bloque les clics
+            pointerEvents: "none",
             zIndex: 99999,
             transform: "translate(-50%, -50%)"
         }} />
