@@ -12,17 +12,20 @@ function ContactButton({ color }: { color: "blanc" | "rouge" }) {
     const [isModalOpen, setIsModalOpen] = useState(false)
 
     useGSAP(() => {
-        jiggleRef.current = gsap.to(buttonRef.current, {
-            scale: 1.4,
-            paused: true,
-            repeat: -1,
-            yoyo: true,
-            duration: 0.2,
-        })
-        resetRef.current = gsap.to(buttonRef.current, {
-            scale: 1,
-            paused: true,
-            duration: 0.2,
+        const mm = gsap.matchMedia()
+        mm.add("(min-width: 769px)", () => {
+            jiggleRef.current = gsap.to(buttonRef.current, {
+                scale: 1.4,
+                paused: true,
+                repeat: -1,
+                yoyo: true,
+                duration: 0.2,
+            })
+            resetRef.current = gsap.to(buttonRef.current, {
+                scale: 1,
+                paused: true,
+                duration: 0.2,
+            })
         })
     }, { scope: buttonRef })
 

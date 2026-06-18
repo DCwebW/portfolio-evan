@@ -51,47 +51,22 @@ export function DomainBlock({ tag, label, children }: {
           scrub: 1,
         },
       });
-    });
 
-    mm.add("(max-width: 768px)", () => {
-      gsap.from(tagRef.current, {
+      gsap.from(el.querySelectorAll(".js-cell"), {
         opacity: 0,
-        y: 16,
-        duration: 0.5,
-        ease: "power2.out",
+        y: 40,
+        duration: 0.65,
+        ease: "power3.out",
+        stagger: 0.08,
         scrollTrigger: {
           trigger: el,
-          start: "top 90%",
-          toggleActions: "play none none none",
-        },
-      });
-
-      gsap.from(split.chars, {
-        opacity: 0,
-        y: 32,
-        duration: 0.6,
-        ease: "power2.out",
-        stagger: 0.03,
-        scrollTrigger: {
-          trigger: el,
-          start: "top 88%",
+          start: "top 80%",
           toggleActions: "play none none none",
         },
       });
     });
 
-    gsap.from(el.querySelectorAll(".js-cell"), {
-      opacity: 0,
-      y: 40,
-      duration: 0.65,
-      ease: "power3.out",
-      stagger: 0.08,
-      scrollTrigger: {
-        trigger: el,
-        start: "top 80%",
-        toggleActions: "play none none none",
-      },
-    });
+    // Pas d'animation sur mobile (max-width: 768px) — affichage statique immédiat
 
     return () => {
       split.revert();

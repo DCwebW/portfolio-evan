@@ -34,21 +34,6 @@ const DemonstrationListe = () => {
       });
     });
 
-    mm.add("(max-width: 768px)", () => {
-      gsap.from(".demo-item", {
-        y: 30,
-        opacity: 0,
-        duration: 0.5,
-        stagger: { amount: 0.4 },
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 90%",
-          toggleActions: "play none none none",
-        },
-      });
-    });
-
     return () => mm.revert();
   }, { scope: containerRef })
 

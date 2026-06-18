@@ -21,47 +21,55 @@ function Citation() {
         const section = containerRef.current
         if (!section || !titleRef.current) return
 
-        // Vider le titre avant l'animation
-        titleRef.current.textContent = ""
+        const mm = gsap.matchMedia()
 
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: section,
-                start: "top 75%",
-                toggleActions: "play none none none",
-            },
+        mm.add("(min-width: 769px)", () => {
+            titleRef.current!.textContent = ""
+            const changeEl = section.querySelector<HTMLElement>(".changetext")
+            if (changeEl) changeEl.textContent = ""
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 75%",
+                    toggleActions: "play none none none",
+                },
+            })
+
+            tl.from(".redbar", { width: 0, duration: 0.9, ease: "power2.out" })
+
+            tl.to(
+                titleRef.current,
+                {
+                    text: { value: TITLE_TEXT, delimiter: "" },
+                    duration: TITLE_TEXT.length * 0.038,
+                    ease: "none",
+                },
+                "-=0.3"
+            )
+
+            CYCLING_WORDS.forEach((word, i) => {
+                tl.to(".changetext", {
+                    text: { value: word, delimiter: "" },
+                    duration: word.length * 0.055,
+                    ease: "none",
+                }, i === 0 ? "-=0.2" : "+=0.6")
+            })
+
+            tl.fromTo(
+                ".contactbutton",
+                { x: 60, opacity: 0 },
+                { x: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
+                "-=0.4"
+            )
         })
 
-        // Barre rouge
-        tl.from(".redbar", { width: 0, duration: 0.9, ease: "power2.out" })
-
-        // Titre lettre par lettre
-        tl.to(
-            titleRef.current,
-            {
-                text: { value: TITLE_TEXT, delimiter: "" },
-                duration: TITLE_TEXT.length * 0.038,
-                ease: "none",
-            },
-            "-=0.3"
-        )
-
-        // Mot changeant lettre par lettre
-        CYCLING_WORDS.forEach((word, i) => {
-            tl.to(".changetext", {
-                text: { value: word, delimiter: "" },
-                duration: word.length * 0.055,
-                ease: "none",
-            }, i === 0 ? "-=0.2" : "+=0.6")
+        mm.add("(max-width: 768px)", () => {
+            titleRef.current!.textContent = TITLE_TEXT
+            const changeEl = section.querySelector<HTMLElement>(".changetext")
+            if (changeEl) changeEl.textContent = CYCLING_WORDS[0]
         })
 
-        // Bouton contact
-        tl.fromTo(
-            ".contactbutton",
-            { x: 60, opacity: 0 },
-            { x: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
-            "-=0.4"
-        )
     }, { scope: containerRef })
 
     return (
