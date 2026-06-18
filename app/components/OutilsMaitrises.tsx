@@ -40,7 +40,7 @@ export default function OutilsMaitrises() {
 
       const mm = gsap.matchMedia();
 
-      // ── Desktop : lettre par lettre ──────────────────────────
+      // ── Desktop : lettre par lettre + animations icons ───────
       mm.add("(min-width: 1024px)", () => {
         p1.textContent = "";
         p2.textContent = "";
@@ -68,36 +68,10 @@ export default function OutilsMaitrises() {
             duration: TITLE_PARTS[2].length * 0.035,
             ease: "none",
           });
-      });
 
-      // ── Mobile / Tablette : fade-in simple ───────────────────
-      mm.add("(max-width: 1023px)", () => {
-        p1.textContent = TITLE_PARTS[0];
-        p2.textContent = TITLE_PARTS[1];
-        p3.textContent = TITLE_PARTS[2];
-
-        gsap.fromTo(
-          titleEl,
-          { opacity: 0, y: 28 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.85,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: section,
-              start: "top 80%",
-              toggleActions: "play none none none",
-            },
-          }
-        );
-      });
-
-      const items = section.querySelectorAll<HTMLElement>(".tool-item");
-      gsap.fromTo(
-        items,
-        { opacity: 0, y: 64 },
-        {
+        const items = section.querySelectorAll<HTMLElement>(".tool-item");
+        gsap.set(items, { opacity: 0, y: 64 });
+        gsap.to(items, {
           opacity: 1,
           y: 0,
           duration: 0.8,
@@ -108,20 +82,27 @@ export default function OutilsMaitrises() {
             start: "top 70%",
             toggleActions: "play none none none",
           },
-        }
-      );
-
-      iconsRef.current.forEach((el, i) => {
-        if (!el) return;
-        const tween = gsap.to(el, {
-          y: -9,
-          duration: 2.5 + i * 0.3,
-          ease: "sine.inOut",
-          yoyo: true,
-          repeat: -1,
-          delay: i * 0.4,
         });
-        floatTweens.current.push(tween);
+
+        iconsRef.current.forEach((el, i) => {
+          if (!el) return;
+          const tween = gsap.to(el, {
+            y: -9,
+            duration: 2.5 + i * 0.3,
+            ease: "sine.inOut",
+            yoyo: true,
+            repeat: -1,
+            delay: i * 0.4,
+          });
+          floatTweens.current.push(tween);
+        });
+      });
+
+      // ── Mobile / Tablette : aucune animation ─────────────────
+      mm.add("(max-width: 1023px)", () => {
+        p1.textContent = TITLE_PARTS[0];
+        p2.textContent = TITLE_PARTS[1];
+        p3.textContent = TITLE_PARTS[2];
       });
     },
     { scope: sectionRef }
@@ -189,7 +170,6 @@ export default function OutilsMaitrises() {
             <div
               key={tool.id}
               className="tool-item"
-              style={{ opacity: 0 }}
             >
               <div
                 ref={(el) => {
@@ -265,9 +245,7 @@ export default function OutilsMaitrises() {
           align-items: center;
         }
 
-        .tool-icon-wrap {
-          will-change: transform;
-        }
+        .tool-icon-wrap {}
 
         .tool-logo {
           width: 72px !important;
@@ -307,6 +285,10 @@ export default function OutilsMaitrises() {
 
         /* ── Desktop (≥ 1024px) ── */
         @media (min-width: 1024px) {
+          .tool-icon-wrap {
+            will-change: transform;
+          }
+
           .outils-section {
             padding: 160px 96px;
           }
