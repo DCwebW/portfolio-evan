@@ -174,7 +174,7 @@ export default function Navbar() {
           <li>
             <a
               className="text-base font-normal text-white/65 no-underline tracking-[0.3px] transition-colors duration-200 hover:text-white focus:outline-none focus-visible:text-white"
-              href="#projects"
+              href="#projets"
               onClick={close}
             >
               Projets
