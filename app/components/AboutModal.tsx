@@ -105,19 +105,6 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
                 </p>
               </div>
 
-              {/* Stack */}
-              <div className="mb-6 pb-6 border-b border-white/10">
-                <p className="text-white/50 text-xs uppercase tracking-widest mb-3">Stack technique</p>
-                <ul className="flex flex-col gap-2">
-                  {stack.map((item) => (
-                    <li key={item.name} className="flex items-center justify-between text-sm">
-                      <span className="text-white">{item.name}</span>
-                      <span className="text-white/40">{item.role}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
               {/* Copyright + mentions */}
               <div className="flex flex-col gap-1">
                 <p className="text-white/40 text-xs">

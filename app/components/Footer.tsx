@@ -20,8 +20,6 @@ const LinkedInIcon = () => (
 const sections = [
   { label: "Accueil", href: "#hero" },
   { label: "Projets", href: "#projects" },
-  { label: "Expériences", href: "#experiences" },
-  { label: "Contact", href: "#footer" },
 ]
 
 const socials = [
