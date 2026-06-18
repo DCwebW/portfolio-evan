@@ -48,7 +48,7 @@ export const GRAPHISME_IMAGES: ImageInfo[] = [
       "Cette création s'inspire directement de l'univers visuel de Lil Durk et du collectif OTF (Only The Family).",
   },
   {
-    src: '/Graphisme/MbappéProjet.jpeg',
+    src: '/Graphisme/MbappeProjet.jpeg',
     title: 'Mbappé - Signature au Real Madrid',
     description:
       "Cette affiche a été réalisée à l'occasion de la signature de Kylian Mbappé au Real Madrid.",

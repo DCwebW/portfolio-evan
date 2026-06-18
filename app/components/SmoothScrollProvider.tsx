@@ -9,23 +9,27 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    if (window.matchMedia("(max-width: 768px)").matches) {
-      const refresh = () => ScrollTrigger.refresh();
-      if (document.readyState === "complete") {
-        refresh();
-      } else {
-        window.addEventListener("load", refresh, { once: true });
-      }
-      return () => {};
-    }
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-    const lenis = new Lenis();
+    const lenis = new Lenis({
+      // Sur mobile, on désactive le smooth wheel pour ne pas interférer
+      // avec le scroll tactile natif, mais on garde le RAF loop actif
+      // pour que ScrollTrigger reçoive des mises à jour régulières.
+      smoothWheel: !isMobile,
+    });
 
     lenis.on("scroll", ScrollTrigger.update);
 
     const tick = (time: number) => lenis.raf(time * 1000);
     gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
+
+    const refresh = () => ScrollTrigger.refresh();
+    if (document.readyState === "complete") {
+      refresh();
+    } else {
+      window.addEventListener("load", refresh, { once: true });
+    }
 
     const stopLenis = () => lenis.stop();
     const startLenis = () => lenis.start();

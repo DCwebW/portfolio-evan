@@ -48,6 +48,11 @@ useGSAP(() => {
             stagger: 0.15,
             duration: 0.6,
             ease: "power2.out",
+            scrollTrigger: {
+                trigger: containerText.current,
+                start: "top 85%",
+                toggleActions: "play none none none",
+            },
         })
     })
 

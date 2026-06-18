@@ -1,0 +1,507 @@
+[
+  {
+    "viewport": "mobile-375",
+    "errors": [
+      "Failed to load resource: net::ERR_CONTENT_LENGTH_MISMATCH"
+    ],
+    "netErrors": [],
+    "checks": {
+      "horizontalScroll": false,
+      "heroTitle": 1,
+      "navbarVisible": true,
+      "smallTouchTargets": [
+        {
+          "text": "Evan",
+          "w": 51,
+          "h": 28
+        },
+        {
+          "text": "",
+          "w": 18,
+          "h": 18
+        },
+        {
+          "text": "",
+          "w": 18,
+          "h": 18
+        },
+        {
+          "text": "Home",
+          "w": 45,
+          "h": 21
+        },
+        {
+          "text": "Projects",
+          "w": 63,
+          "h": 21
+        },
+        {
+          "text": "Accueil",
+          "w": 44,
+          "h": 19
+        },
+        {
+          "text": "Projets",
+          "w": 42,
+          "h": 19
+        },
+        {
+          "text": "Expériences",
+          "w": 72,
+          "h": 19
+        },
+        {
+          "text": "Contact",
+          "w": 48,
+          "h": 19
+        },
+        {
+          "text": "TikTok",
+          "w": 63,
+          "h": 20
+        },
+        {
+          "text": "LinkedIn",
+          "w": 76,
+          "h": 20
+        }
+      ],
+      "overflowingTexts": [],
+      "brokenImages": [
+        {
+          "src": "http://localhost:3000/Graphisme/FreddyConduiteProjet2.jpeg",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/LilDurkProjet.jpeg",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/PierreFeretAffiche.png",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/S-PriNoirProjet.jpeg",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/FallyIpupaProjet.jpeg",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/FeliciaProjet2.png",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/FreddyConduiteProjet2.jpeg",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/LilDurkProjet.jpeg",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/PierreFeretAffiche.png",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/S-PriNoirProjet.jpeg",
+          "alt": ""
+        }
+      ],
+      "sections": [
+        {
+          "tag": "SECTION",
+          "id": "hero",
+          "className": "relative w-full h-[85vh] md:h-screen min-h-[520px] md:min-h-",
+          "height": 690
+        },
+        {
+          "tag": "SECTION",
+          "id": "about",
+          "className": " containerText bg-[var(--dark)] pt-16 md:pt-20 lg:pt-[120px]",
+          "height": 613
+        },
+        {
+          "tag": "SECTION",
+          "id": "projets",
+          "className": "bg-(--dark) pt-16 md:pt-20 lg:pt-[100px] pb-16 md:pb-20 lg:p",
+          "height": 2397
+        },
+        {
+          "tag": "SECTION",
+          "id": "trusted",
+          "className": "bg-[var(--light)] -mt-12 pt-10 md:pt-14 pb-10 md:pb-14 relat",
+          "height": 346
+        },
+        {
+          "tag": "SECTION",
+          "id": "",
+          "className": "bg-[var(--light)] h-auto z-0",
+          "height": 174
+        },
+        {
+          "tag": "SECTION",
+          "id": "",
+          "className": "bg-(--light) relative z-10 mt-8 md:mt-11 min-h-fit h-auto pb",
+          "height": 277
+        },
+        {
+          "tag": "SECTION",
+          "id": "",
+          "className": "bg-white flex flex-wrap items-center justify-center gap-3 sm",
+          "height": 784
+        },
+        {
+          "tag": "SECTION",
+          "id": "",
+          "className": " px-5 md:px-8 lg:px-13 pb-16 md:pb-20 lg:pb-24 mt-20 pt-3",
+          "height": 532
+        },
+        {
+          "tag": "SECTION",
+          "id": "",
+          "className": "outils-section",
+          "height": 581
+        }
+      ],
+      "scrollContainers": [
+        {
+          "tag": "HTML",
+          "id": "",
+          "class": "manrope_6fd7433c-module__Zz-jia__variable dm_sans_3d80eddf-m",
+          "heightPx": 7588,
+          "heightVh": 9
+        },
+        {
+          "tag": "BODY",
+          "id": "",
+          "class": "bg-[var(--light)] text-white font-body overflow-x-hidden",
+          "heightPx": 7588,
+          "heightVh": 9
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "tablet-768",
+    "errors": [],
+    "netErrors": [],
+    "checks": {
+      "horizontalScroll": false,
+      "heroTitle": 1,
+      "navbarVisible": true,
+      "smallTouchTargets": [
+        {
+          "text": "Evan",
+          "w": 51,
+          "h": 28
+        },
+        {
+          "text": "",
+          "w": 18,
+          "h": 18
+        },
+        {
+          "text": "",
+          "w": 18,
+          "h": 18
+        },
+        {
+          "text": "Accueil",
+          "w": 50,
+          "h": 18
+        },
+        {
+          "text": "Projets",
+          "w": 47,
+          "h": 18
+        },
+        {
+          "text": "Accueil",
+          "w": 44,
+          "h": 19
+        },
+        {
+          "text": "Projets",
+          "w": 42,
+          "h": 19
+        },
+        {
+          "text": "Expériences",
+          "w": 72,
+          "h": 19
+        },
+        {
+          "text": "Contact",
+          "w": 48,
+          "h": 19
+        },
+        {
+          "text": "TikTok",
+          "w": 63,
+          "h": 20
+        },
+        {
+          "text": "LinkedIn",
+          "w": 76,
+          "h": 20
+        }
+      ],
+      "overflowingTexts": [],
+      "brokenImages": [
+        {
+          "src": "http://localhost:3000/Graphisme/LilDurkProjet.jpeg",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/PierreFeretAffiche.png",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/S-PriNoirProjet.jpeg",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/FallyIpupaProjet.jpeg",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/FeliciaProjet2.png",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/FreddyConduiteProjet2.jpeg",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/LilDurkProjet.jpeg",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/PierreFeretAffiche.png",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/S-PriNoirProjet.jpeg",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/Mbapp%C3%A9Projet.jpeg",
+          "alt": ""
+        }
+      ],
+      "sections": [
+        {
+          "tag": "SECTION",
+          "id": "hero",
+          "className": "relative w-full h-[85vh] md:h-screen min-h-[520px] md:min-h-",
+          "height": 1024
+        },
+        {
+          "tag": "SECTION",
+          "id": "about",
+          "className": " containerText bg-[var(--dark)] pt-16 md:pt-20 lg:pt-[120px]",
+          "height": 617
+        },
+        {
+          "tag": "SECTION",
+          "id": "projets",
+          "className": "bg-(--dark) pt-16 md:pt-20 lg:pt-[100px] pb-16 md:pb-20 lg:p",
+          "height": 2075
+        },
+        {
+          "tag": "SECTION",
+          "id": "trusted",
+          "className": "bg-[var(--light)] -mt-12 pt-10 md:pt-14 pb-10 md:pb-14 relat",
+          "height": 386
+        },
+        {
+          "tag": "SECTION",
+          "id": "",
+          "className": "bg-[var(--light)] h-auto z-0",
+          "height": 391
+        },
+        {
+          "tag": "SECTION",
+          "id": "",
+          "className": "bg-(--light) relative z-10 mt-8 md:mt-11 min-h-fit h-auto pb",
+          "height": 469
+        },
+        {
+          "tag": "SECTION",
+          "id": "",
+          "className": "bg-white flex flex-wrap items-center justify-center gap-3 sm",
+          "height": 1296
+        },
+        {
+          "tag": "SECTION",
+          "id": "",
+          "className": " px-5 md:px-8 lg:px-13 pb-16 md:pb-20 lg:pb-24 mt-20 pt-3",
+          "height": 592
+        },
+        {
+          "tag": "SECTION",
+          "id": "",
+          "className": "outils-section",
+          "height": 535
+        }
+      ],
+      "scrollContainers": [
+        {
+          "tag": "HTML",
+          "id": "",
+          "class": "manrope_6fd7433c-module__Zz-jia__variable dm_sans_3d80eddf-m",
+          "heightPx": 8372,
+          "heightVh": 8
+        },
+        {
+          "tag": "BODY",
+          "id": "",
+          "class": "bg-[var(--light)] text-white font-body overflow-x-hidden",
+          "heightPx": 8372,
+          "heightVh": 8
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "desktop-1440",
+    "errors": [],
+    "netErrors": [],
+    "checks": {
+      "horizontalScroll": false,
+      "heroTitle": 1,
+      "navbarVisible": true,
+      "overflowingTexts": [
+        {
+          "tag": "H1",
+          "text": "Chargé deCommunication",
+          "scrollWidth": 609,
+          "clientWidth": 520
+        }
+      ],
+      "brokenImages": [
+        {
+          "src": "http://localhost:3000/Graphisme/FallyIpupaProjet.jpeg",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/FeliciaProjet2.png",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/FreddyConduiteProjet2.jpeg",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/LilDurkProjet.jpeg",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/PierreFeretAffiche.png",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/S-PriNoirProjet.jpeg",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/FallyIpupaProjet.jpeg",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/FeliciaProjet2.png",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/FreddyConduiteProjet2.jpeg",
+          "alt": ""
+        },
+        {
+          "src": "http://localhost:3000/Graphisme/LilDurkProjet.jpeg",
+          "alt": ""
+        }
+      ],
+      "sections": [
+        {
+          "tag": "SECTION",
+          "id": "hero",
+          "className": "relative w-full h-[85vh] md:h-screen min-h-[520px] md:min-h-",
+          "height": 900
+        },
+        {
+          "tag": "SECTION",
+          "id": "about",
+          "className": " containerText bg-[var(--dark)] pt-16 md:pt-20 lg:pt-[120px]",
+          "height": 652
+        },
+        {
+          "tag": "SECTION",
+          "id": "projets",
+          "className": "bg-(--dark) pt-16 md:pt-20 lg:pt-[100px] pb-16 md:pb-20 lg:p",
+          "height": 2082
+        },
+        {
+          "tag": "SECTION",
+          "id": "trusted",
+          "className": "bg-[var(--light)] -mt-12 pt-10 md:pt-14 pb-10 md:pb-14 relat",
+          "height": 341
+        },
+        {
+          "tag": "SECTION",
+          "id": "",
+          "className": "bg-[var(--light)] h-auto z-0",
+          "height": 714
+        },
+        {
+          "tag": "SECTION",
+          "id": "",
+          "className": "bg-(--light) relative z-10 mt-8 md:mt-11 min-h-fit h-auto pb",
+          "height": 683
+        },
+        {
+          "tag": "SECTION",
+          "id": "",
+          "className": "bg-white flex flex-wrap items-center justify-center gap-3 sm",
+          "height": 456
+        },
+        {
+          "tag": "SECTION",
+          "id": "",
+          "className": " px-5 md:px-8 lg:px-13 pb-16 md:pb-20 lg:pb-24 mt-20 pt-3",
+          "height": 608
+        },
+        {
+          "tag": "SECTION",
+          "id": "",
+          "className": "outils-section",
+          "height": 558
+        }
+      ],
+      "scrollContainers": [
+        {
+          "tag": "HTML",
+          "id": "",
+          "class": "manrope_6fd7433c-module__Zz-jia__variable dm_sans_3d80eddf-m",
+          "heightPx": 11615,
+          "heightVh": 13
+        },
+        {
+          "tag": "BODY",
+          "id": "",
+          "class": "bg-[var(--light)] text-white font-body overflow-x-hidden",
+          "heightPx": 11615,
+          "heightVh": 13
+        },
+        {
+          "tag": "DIV",
+          "id": "",
+          "class": "relative h-[400vh] bg-white",
+          "heightPx": 3600,
+          "heightVh": 4
+        }
+      ]
+    }
+  }
+]

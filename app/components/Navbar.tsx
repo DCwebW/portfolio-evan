@@ -168,7 +168,7 @@ export default function Navbar() {
               href="#hero"
               onClick={close}
             >
-              Home
+              Accueil
             </a>
           </li>
           <li>
@@ -177,7 +177,7 @@ export default function Navbar() {
               href="#projects"
               onClick={close}
             >
-              Projects
+              Projets
             </a>
           </li>
           <li>
