@@ -6,7 +6,7 @@ import type { R2Video } from '@/lib/fetchPrisesDeVue';
 import { VideoTooltip } from './VideoTooltip';
 import type { VideoInfo } from '../Projets';
 
-export function VideoCarouselCell({ video, onOpen }: { video: R2Video; onOpen?: () => void }) {
+export function VideoCarouselCell({ video, onOpen, fullHeight }: { video: R2Video; onOpen?: () => void; fullHeight?: boolean }) {
   const tooltipRef = useRef<HTMLDivElement>(null);
   const title = video.key.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' ');
   const info: VideoInfo = { src: video.url, title, description: '' };
@@ -29,7 +29,7 @@ export function VideoCarouselCell({ video, onOpen }: { video: R2Video; onOpen?: 
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
-      className="relative flex-shrink-0 w-[280px] h-[180px] md:w-[360px] md:h-[220px] overflow-hidden rounded-xl cursor-pointer"
+      className={`relative w-full overflow-hidden rounded-xl cursor-pointer ${fullHeight ? 'h-full' : 'h-[180px] md:h-[220px]'}`}
     >
       <video
         src={video.url}

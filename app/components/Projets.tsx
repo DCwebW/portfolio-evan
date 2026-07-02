@@ -23,6 +23,10 @@ const VIDEO_META = [
     description: "Cette vidéo a été réalisée pour l’artiste Felicia à l’occasion de l’interprétation d’un extrait de son prochain single.L’objectif était de créer une ambiance immersive et artistique mettant en valeur son univers musical, son expression scénique et l’émotion transmise à travers sa performance.",
   },
   {
+    title: "Nemours Basket Club - Gala Game",
+    description:"Vidéo réalisée pour un match de Gala organisé par le Nemours Basket Club au Gymnase Roux"
+  },
+  {
     title:"Mitcho - Session Studio",
     description: "Cette vidéo a été tournée pendant une séance studio de la chanteuse Michou afin de montrer les coulisses de l’enregistrement et son immersion dans le processus créatif.À travers des images spontanées et une ambiance intimiste, cette réalisation met en lumière le travail artistique, l’énergie du studio et l’authenticité du moment."
   },

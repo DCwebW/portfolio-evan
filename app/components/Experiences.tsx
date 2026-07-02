@@ -11,6 +11,8 @@ const EXPERIENCES = [
   { initial: "U", name: "Union Internationale Architecte",logo:"/Logos/Union-Architectes-LogoNoir-NoBG.png",alt:"UIA-Image" },
   { initial: "F", name: "Freddy Conduite", logo:"/Logos/Freddy-Conduite-LogoNoir-NoBG.png", alt:"FreddyConduite-Image" },
   { initial: "L", name: "Label Collector Music", logo:"/Logos/Collector-Music-Logo.png", alt:"CM-Image" },
+  { initial: "N", name: "Nemours Basket Club", logo:"/Logos/NemoursBasketClubLogo.png", alt:"NBC-Image" },
+  { initial: "P", name: "Pierre Feret", logo:"/Logos/PierreFeretLogo.png", alt:"PF-Image" },
 ];
 
 export default function Experiences() {
