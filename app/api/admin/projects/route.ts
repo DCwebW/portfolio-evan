@@ -27,24 +27,33 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "L'URL du média est requise." }, { status: 400 })
   }
 
-  const supabase = createAdminClient()
-  const { data, error } = await supabase
-    .from('projects')
-    .insert({
-      category,
-      title: title.trim(),
-      description: typeof description === 'string' ? description.trim() : '',
-      media_url: media_url.trim(),
-      thumbnail_url: typeof thumbnail_url === 'string' && thumbnail_url.trim() ? thumbnail_url.trim() : null,
-      featured: Boolean(featured),
-      display_order: Number.isFinite(display_order) ? display_order : 0,
-    })
-    .select()
-    .single()
+  try {
+    const supabase = createAdminClient()
+    const { data, error } = await supabase
+      .from('projects')
+      .insert({
+        category,
+        title: title.trim(),
+        description: typeof description === 'string' ? description.trim() : '',
+        media_url: media_url.trim(),
+        thumbnail_url:
+          typeof thumbnail_url === 'string' && thumbnail_url.trim() ? thumbnail_url.trim() : null,
+        featured: Boolean(featured),
+        display_order: Number.isFinite(display_order) ? display_order : 0,
+      })
+      .select()
+      .single()
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 })
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 500 })
+    }
+
+    return NextResponse.json({ project: data }, { status: 201 })
+  } catch (err) {
+    console.error('POST /api/admin/projects', err)
+    return NextResponse.json(
+      { error: err instanceof Error ? err.message : 'Erreur serveur inattendue.' },
+      { status: 500 }
+    )
   }
-
-  return NextResponse.json({ project: data }, { status: 201 })
 }

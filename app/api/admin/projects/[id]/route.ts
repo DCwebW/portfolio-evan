@@ -31,19 +31,27 @@ export async function PATCH(
     return NextResponse.json({ error: 'Aucun champ à mettre à jour.' }, { status: 400 })
   }
 
-  const supabase = createAdminClient()
-  const { data, error } = await supabase
-    .from('projects')
-    .update(updates)
-    .eq('id', id)
-    .select()
-    .single()
+  try {
+    const supabase = createAdminClient()
+    const { data, error } = await supabase
+      .from('projects')
+      .update(updates)
+      .eq('id', id)
+      .select()
+      .single()
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 })
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 500 })
+    }
+
+    return NextResponse.json({ project: data })
+  } catch (err) {
+    console.error('PATCH /api/admin/projects/[id]', err)
+    return NextResponse.json(
+      { error: err instanceof Error ? err.message : 'Erreur serveur inattendue.' },
+      { status: 500 }
+    )
   }
-
-  return NextResponse.json({ project: data })
 }
 
 export async function DELETE(
@@ -51,12 +59,21 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params
-  const supabase = createAdminClient()
-  const { error } = await supabase.from('projects').delete().eq('id', id)
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 })
+  try {
+    const supabase = createAdminClient()
+    const { error } = await supabase.from('projects').delete().eq('id', id)
+
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 500 })
+    }
+
+    return NextResponse.json({ success: true })
+  } catch (err) {
+    console.error('DELETE /api/admin/projects/[id]', err)
+    return NextResponse.json(
+      { error: err instanceof Error ? err.message : 'Erreur serveur inattendue.' },
+      { status: 500 }
+    )
   }
-
-  return NextResponse.json({ success: true })
 }
