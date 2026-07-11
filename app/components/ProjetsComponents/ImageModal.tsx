@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Maximize2, X } from 'lucide-react';
-import type { ImageInfo } from '@/lib/graphisme';
+import type { ImageInfo } from './Carousel';
 
 interface ImageModalProps {
   items: ImageInfo[];

@@ -28,6 +28,30 @@ const PUBLIC_URL_BY_CATEGORY: Record<string, string | undefined> = {
 
 const MAX_FILE_SIZE = 200 * 1024 * 1024 // 200 Mo
 
+// Certains navigateurs/OS ne renseignent pas file.type pour certains formats
+// vidéo (.mov, .avi, .mkv...) : sans Content-Type correct, la balise <video>
+// refuse silencieusement de lire le fichier même si l'URL fonctionne en accès direct.
+const CONTENT_TYPE_BY_EXTENSION: Record<string, string> = {
+  mp4: 'video/mp4',
+  mov: 'video/quicktime',
+  webm: 'video/webm',
+  avi: 'video/x-msvideo',
+  mkv: 'video/x-matroska',
+  m4v: 'video/x-m4v',
+  jpg: 'image/jpeg',
+  jpeg: 'image/jpeg',
+  png: 'image/png',
+  webp: 'image/webp',
+  gif: 'image/gif',
+  avif: 'image/avif',
+}
+
+function resolveContentType(file: File): string {
+  if (file.type) return file.type
+  const extension = file.name.split('.').pop()?.toLowerCase()
+  return (extension && CONTENT_TYPE_BY_EXTENSION[extension]) || 'application/octet-stream'
+}
+
 function sanitizeFileName(name: string) {
   return name.replace(/[^a-zA-Z0-9._-]/g, '_')
 }
@@ -72,7 +96,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Fichier trop volumineux (200 Mo max).' }, { status: 400 })
   }
 
-  const key = `${category}/${randomUUID()}-${sanitizeFileName(file.name)}`
+  const key = `${randomUUID()}-${sanitizeFileName(file.name)}`
   const buffer = Buffer.from(await file.arrayBuffer())
 
   try {
@@ -81,7 +105,7 @@ export async function POST(request: NextRequest) {
         Bucket: bucket,
         Key: key,
         Body: buffer,
-        ContentType: file.type || 'application/octet-stream',
+        ContentType: resolveContentType(file),
       })
     )
   } catch (err) {

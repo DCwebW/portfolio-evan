@@ -6,9 +6,12 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CarouselCell } from "./CarouselCell";
 import { ImageModal } from "./ImageModal";
-import type { ImageInfo } from "@/lib/graphisme";
 
-export type { ImageInfo };
+export type ImageInfo = {
+  src: string;
+  title: string;
+  description: string;
+};
 
 export function Carousel({ images }: { images: ImageInfo[] }) {
   const wrapperRef = useRef<HTMLDivElement>(null);

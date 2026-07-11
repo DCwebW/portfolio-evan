@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState, useCallback, useEffect } from 'react';
-import type { R2Video } from '@/lib/fetchPrisesDeVue';
+import type { Project } from '@/lib/projects';
 import { VideoCarouselCell } from './VideoCarouselCell';
 import { VideoModal } from './VideoModal';
 import type { VideoInfo } from '../Projets';
@@ -22,7 +22,7 @@ function ChevronRight() {
   );
 }
 
-export function VideoCarousel({ videos }: { videos: R2Video[] }) {
+export function VideoCarousel({ videos }: { videos: Project[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
@@ -51,15 +51,15 @@ export function VideoCarousel({ videos }: { videos: R2Video[] }) {
 
   if (videos.length === 0) return null;
 
-  const columns: R2Video[][] = [];
+  const columns: Project[][] = [];
   for (let i = 0; i < videos.length; i += 2) {
     columns.push(videos.slice(i, i + 2));
   }
 
   const videoItems: VideoInfo[] = videos.map((v) => ({
-    src: v.url,
-    title: v.key.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' '),
-    description: '',
+    src: v.media_url,
+    title: v.title,
+    description: v.description,
   }));
 
   return (
@@ -91,7 +91,7 @@ export function VideoCarousel({ videos }: { videos: R2Video[] }) {
                   const globalIdx = colIdx * 2 + videoIdx;
                   return (
                     <VideoCarouselCell
-                      key={video.key}
+                      key={video.id}
                       video={video}
                       fullHeight={isAlone}
                       onOpen={() => setSelectedIndex(globalIdx)}
