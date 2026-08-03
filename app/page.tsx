@@ -1,5 +1,3 @@
-"use client"
-
 import HeroSection from "./components/HeroSection";
 import ParallaxSection from "./components/ParallaxSection";
 import Projets from "./components/Projets";
@@ -12,10 +10,12 @@ import ListeDemonstration from "./components/Demonstration/ListeDemonstration";
 import CallToAction from "./components/CallToAction";
 import Footer from "./components/Footer";
 import OutilsMaitrises from "./components/OutilsMaitrises";
-
+import { getProjectsSnapshot } from "@/lib/projectsSnapshot";
 
 export default function Home() {
-
+  const graphisme = getProjectsSnapshot("graphisme");
+  const videos = getProjectsSnapshot("video");
+  const prisesDeVue = getProjectsSnapshot("prise_de_vue");
 
   return (
     <>
@@ -59,7 +59,7 @@ export default function Home() {
       <Introduction/>
 
       {/* PROJETS */}
-      <Projets />
+      <Projets graphisme={graphisme} videos={videos} prisesDeVue={prisesDeVue} />
 
       {/* EXPÉRIENCES */}
       <Experiences />

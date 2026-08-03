@@ -1,3 +1,4 @@
+
 import Link from 'next/link'
 import { createClient } from '@/app/api/supabase/server'
 import type { Project } from '@/lib/projects'

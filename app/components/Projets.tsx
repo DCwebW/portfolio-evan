@@ -3,8 +3,7 @@ import { Carousel } from "./ProjetsComponents/Carousel";
 import { BentoGrid } from "./ProjetsComponents/BentoGrid";
 import { Cell } from "./ProjetsComponents/Cell";
 import { DomainBlock } from "./ProjetsComponents/DomainBlock";
-import { useEffect, useState } from 'react';
-import { fetchProjects } from "@/lib/fetchProjects";
+import { useState } from 'react';
 import type { Project } from "@/lib/projects";
 import { VideoCarousel } from "./ProjetsComponents/VideoCarousel";
 import { VideoModal } from "./ProjetsComponents/VideoModal";
@@ -15,22 +14,14 @@ export type VideoInfo = {
   description: string;
 };
 
-export default function Projets() {
-  const [graphisme, setGraphisme] = useState<Project[]>([]);
-  const [videos, setVideos] = useState<Project[]>([]);
-  const [prisesDeVue, setPrisesDeVue] = useState<Project[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [selectedVideoIndex, setSelectedVideoIndex] = useState<number | null>(null);
+type ProjetsProps = {
+  graphisme: Project[];
+  videos: Project[];
+  prisesDeVue: Project[];
+};
 
-  useEffect(() => {
-    fetchProjects()
-      .then((projects) => {
-        setGraphisme(projects.filter((p) => p.category === 'graphisme'));
-        setVideos(projects.filter((p) => p.category === 'video'));
-        setPrisesDeVue(projects.filter((p) => p.category === 'prise_de_vue'));
-      })
-      .catch((err: Error) => setError(err.message));
-  }, []);
+export default function Projets({ graphisme, videos, prisesDeVue }: ProjetsProps) {
+  const [selectedVideoIndex, setSelectedVideoIndex] = useState<number | null>(null);
 
   const graphismeImages = graphisme.map((p) => ({
     src: p.media_url,
@@ -44,7 +35,6 @@ export default function Projets() {
       className="bg-(--dark) pt-16 md:pt-20 lg:pt-[100px] pb-16 md:pb-20 lg:pb-[120px] relative z-0"
     >
       <div className="max-w-[1400px] mx-auto flex flex-col gap-12 md:gap-16 lg:gap-24 px-5 md:px-8 lg:px-[52px]">
-        {error && <p className="text-red-500">Erreur : {error}</p>}
         <DomainBlock tag="Projets — 01" label="Graphisme" >
           <Carousel images={graphismeImages} />
         </DomainBlock>
